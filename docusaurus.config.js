@@ -109,6 +109,7 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
+      colorMode: { defaultMode: "light", disableSwitch: true },
     }),
   plugins: [
     async function myPlugin(context, options) {

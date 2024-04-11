@@ -1,17 +1,14 @@
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 
 export default function Puzzle() {
   const {
     siteConfig: { customFields },
-  } = useDocusaurusContext();
+  } = useDocusaurusContext()
 
-  console.log(customFields.puzzleUrl);
+  console.log(customFields.puzzleUrl)
   return (
-    <>
-      <iframe
-        style={{ height: 500, width: 500 }}
-        src={customFields.puzzleUrl}
-      ></iframe>
-    </>
-  );
+    <div className="h-24">
+      <iframe src={customFields.puzzleUrl}></iframe>
+    </div>
+  )
 }

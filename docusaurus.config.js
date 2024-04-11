@@ -4,8 +4,9 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import 'dotenv/config';
-import { themes as prismThemes } from 'prism-react-renderer';
+import 'dotenv/config'
+import { themes as prismThemes } from 'prism-react-renderer'
+import tailwindPlugin from './plugins/tailwind-config.cjs'
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -117,19 +118,7 @@ const config = {
       },
       colorMode: { defaultMode: 'light', disableSwitch: true },
     }),
-  plugins: [
-    async function myPlugin(context, options) {
-      return {
-        name: 'docusaurus-tailwindcss',
-        configurePostCss(postcssOptions) {
-          // Appends TailwindCSS and AutoPrefixer.
-          postcssOptions.plugins.push(require('tailwindcss'));
-          postcssOptions.plugins.push(require('autoprefixer'));
-          return postcssOptions;
-        },
-      };
-    },
-  ],
-};
+  plugins: [tailwindPlugin],
+}
 
-export default config;
+export default config

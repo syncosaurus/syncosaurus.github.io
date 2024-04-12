@@ -1,0 +1,28 @@
+# Overview
+
+Syncosaurus is a React Javascript developer framework for rapidly building real-time, collaborative applications backed by the Cloudflare edge network of Workers and Durable Objects
+In this case study, we will:
+
+- define real-time collaborative applications
+- explain why they are not trivial to build
+- explore existing solutions
+- discuss core concepts to understand and use Syncosaurus
+- explain how Syncosaurus was built
+- discuss potential future improvements
+
+## Preface on architecture
+
+At a fundamental level when multiple users are “collaborating” on the same artifact, they are exchanging data to manipulate the synchronized view of the artifact. Practically, this means that all users who are observing and making changes to the artifact on the web application will need to exchange information back and forth in real-time via the open internet.
+
+Although there are numerous architectures for web applications, they can broadly be categorized as:
+
+- **Centralized** such as the client-server architecture where client machines send resource requests to a backend server. In the client-server architecture, the server is generally authoritative, meaning it is the source of truth.
+
+- **Decentralized** such as the peer-to-peer architecture where every machine (known as a node) is treated equally and responsible for sending and responding to requests for resources. In the peer-to-peer architecture, every machine has equal authority and a consensus must usually be reached to determine the truth.
+
+Though it is possible to build decentralized real-time collaboration web apps, it is notoriously complex and many existing real-time collaborative apps use a form of the client-server architecture. This is because the client-server architecture is often more efficient and easier to maintain, although, it does introduce a single point of failure risk.
+Given this and the predominance of the client-server architecture in web apps, we will assume that any application considering Syncosaurus will be using some form of a centralized backend. Note that the centralized backend of a client-server architecture can be made up of many servers in the case of a distributed client-server architecture, however, we will still refer to the backend collectively as the “server”.
+
+# Building Real-Time Collaborative Applications Is Not Trivial
+
+On the surface, building real-time collaborative applications may not seem any different than building other web applications, however, if we break down each word of “real-time collaboration” into more concrete and technical definitions, we quickly realize that is not the case.

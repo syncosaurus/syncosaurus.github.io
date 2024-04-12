@@ -11,21 +11,19 @@ import styles from './index.module.css'
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext()
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Puzzle />
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/case-study"
-          >
-            Read the Case Study
-          </Link>
-        </div>
+    <header className="flex flex-col text-center items-center py-4 bg-gradient-to-br from-slate-900 to-sky-800">
+      <Puzzle />
+      <h1 className="text-4xl font-bold text-white m-8">{siteConfig.title}</h1>
+      <p className="text-xl py-6 text-white min-w-96 max-w-screen-lg">
+        {siteConfig.tagline}
+      </p>
+      <div className="py-10">
+        <Link
+          className="bg-white rounded-md text-gray-500 px-4 py-2"
+          to="/case-study"
+        >
+          Read the case study
+        </Link>
       </div>
     </header>
   )

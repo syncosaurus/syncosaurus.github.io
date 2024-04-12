@@ -1,0 +1,3 @@
+# Subscriptions
+
+A **subscription** is what allows clients to monitor if and when changes occur to the shared state of a room, regardless if the source of a change is local or from the authoritative server. **Queries** work hand-in-hand with subscriptions, allowing for a customization of what state changes are being monitored. Queries are able to filter, aggregate and transform the shared state, or only portions of the shared state, to enable more granular application behavior and logic. These abilities are non-mutating and do not affect the shared application state, as it is only the server that can dictate final changes to shared state.

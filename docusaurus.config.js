@@ -88,6 +88,12 @@ const config = {
           },
         ],
       },
+      docs: {
+        sidebar: {
+          hideable: false,
+          autoCollapseCategories: false,
+        }
+      },
       footer: {
         style: 'dark',
         links: [

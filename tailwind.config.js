@@ -22,7 +22,10 @@ module.exports = {
         sm: '0px',
         lg: '997px',
       },
-      colors: {},
+      colors: {
+        syncoBlue: '#1D3370',
+        syncoGreen: '#7ED348',
+      },
     },
   },
   plugins: [],

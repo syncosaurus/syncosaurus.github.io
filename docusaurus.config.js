@@ -6,6 +6,8 @@
 
 import 'dotenv/config';
 import { themes as prismThemes } from 'prism-react-renderer';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -48,17 +50,10 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          sidebarCollapsed: false,
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -80,7 +75,8 @@ const config = {
         },
         items: [
           { to: '/case-study', label: 'Case Study', position: 'right' },
-          { to: '/team', label: 'Team', position: 'right' },
+          { to: '/team', label: 'The Team', position: 'right' },
+          { type: 'doc', label: 'Docs', docId: 'index', position: 'right' },
           {
             to: 'https://github.com/syncosaurus',
             label: 'GitHub',
@@ -90,12 +86,11 @@ const config = {
       },
       docs: {
         sidebar: {
-          hideable: false,
           autoCollapseCategories: false,
         }
       },
       footer: {
-        style: 'dark',
+        style: 'light',
         links: [
           {
             title: 'Navigation',

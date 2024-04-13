@@ -76,4 +76,4 @@ Evolving your Syncosaurus server... done!
   https://kitten.josephliang.workers.dev
 ```
 
-For instructions on deploying your frontend, see here.
+For instructions on deploying your frontend, see here YOU NEED TO LINK HERE

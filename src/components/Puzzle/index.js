@@ -14,7 +14,7 @@ function IFrame() {
 
 export default function Puzzle() {
   return (
-    <div className="h-96 w-5/6 col-span-2 flex">
+    <div className="container w">
       <IFrame />
       <IFrame />
     </div>

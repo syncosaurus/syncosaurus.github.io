@@ -1,12 +1,13 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import ClientWindow from '/landing/Client-window2.svg'
+import Signal from './Signal'
 
 function IFrame() {
   const {
     siteConfig: { customFields },
   } = useDocusaurusContext()
   return (
-    <div className="container inline-block w-[500px] ml-6 mr-6 mb-6">
+    <div className="container inline-block w-[500px] mb-6 mx-6">
       <iframe
         className="bg-transparent h-96 w-[500px]"
         src={customFields.puzzleUrl}
@@ -20,6 +21,7 @@ export default function Puzzle() {
   return (
     <div className="container">
       <IFrame />
+      <Signal />
       <IFrame />
     </div>
   )

@@ -73,7 +73,7 @@ If your application was configured correctly, the URL to your deployed applicati
 Evolving your Syncosaurus server... done!
 
 ✅ Success! Your Syncosaurus server is available at
-  https://kitten.josephliang.workers.dev
+  https://my-cool-app.johnsmith.workers.dev
 ```
 
-For instructions on deploying your frontend, see here YOU NEED TO LINK HERE
+To deploy your frontend, simply add this URL as an environment variable in your frontend application's directory.

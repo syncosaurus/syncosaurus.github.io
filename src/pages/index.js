@@ -11,7 +11,7 @@ import styles from './index.module.css'
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext()
   return (
-    <header className="flex flex-col text-center items-center py-4 bg-gradient-to-br from-slate-900 to-">
+    <header className="flex flex-col text-center items-center py-16 bg-gradient-to-br from-slate-400 to-syncoBlue">
       <Puzzle />
       <h1 className="text-4xl font-bold text-white m-8">{siteConfig.title}</h1>
       <p className="text-xl py-6 text-white min-w-96 max-w-screen-lg">

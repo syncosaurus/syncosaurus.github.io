@@ -39,3 +39,9 @@ $ GIT_USER=<Your GitHub username> yarn deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
+## Team Notes
+
+### On animated SVGs
+
+Adding an animated SVG into Docusaurus requires a couple special steps. Follow the instructions [here](https://www.svgator.com/help/getting-started/add-animated-svgs-to-react-website), for item 1 for `create-react-app`. However, on step 3, make sure to leave the `<script>` tags in the SVG, and there must be a space or newline between the inner `CDATA[[ ]]`. See any animated SVG for an example.

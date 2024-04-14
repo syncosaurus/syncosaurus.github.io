@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import { useEffect } from 'react'
-import SignalSvg from '/landing/signal.svg'
+import SignalSvg from './signal.svg'
 
 function Signal() {
   useEffect(() => {

@@ -1,6 +1,7 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import ClientWindow from '/landing/Client-window2.svg'
 import Signal from './Signal'
+import { useState } from 'react'
 
 function IFrame() {
   const {
@@ -18,10 +19,13 @@ function IFrame() {
 }
 
 export default function Puzzle() {
+  const [windowWidth, setWindowWidth] = useState()
+
+  window.addEventListener('resize', e => setWindowWidth(e.target.innerWidth))
   return (
     <div className="container">
       <IFrame />
-      <Signal />
+      {windowWidth > 1127 && <Signal />}
       <IFrame />
     </div>
   )

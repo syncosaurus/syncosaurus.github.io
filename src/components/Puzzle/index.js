@@ -1,6 +1,7 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import ClientWindow from '/landing/Client-window2.svg'
 import Signal from './Signal'
+import SignalVertical from './SignalVertical'
 import { useState } from 'react'
 
 function IFrame() {
@@ -8,24 +9,34 @@ function IFrame() {
     siteConfig: { customFields },
   } = useDocusaurusContext()
   return (
-    <div className="container inline-block w-[500px] mb-6 mx-6">
+    <div className="container inline-block w-[500px] m-0 p-0">
       <iframe
         className="bg-transparent h-96 w-[500px]"
         src={customFields.puzzleUrl}
       ></iframe>
-      <ClientWindow className="absolute w-[504px] h-[416px] -translate-x-[235px] -translate-y-[413px] pointer-events-none" />
+      <ClientWindow className="absolute w-[502px] -translate-x-[501px] -translate-y-4 pointer-events-none" />
     </div>
   )
 }
 
 export default function Puzzle() {
-  const [windowWidth, setWindowWidth] = useState()
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   window.addEventListener('resize', e => setWindowWidth(e.target.innerWidth))
+
+  if (windowWidth < 1094) {
+    return (
+      <div className="grid grid-cols-1 gap-0 justify-center">
+        <IFrame />
+        <SignalVertical />
+        <IFrame />
+      </div>
+    )
+  }
   return (
-    <div className="container">
+    <div className="flex">
       <IFrame />
-      {windowWidth > 1127 && <Signal />}
+      <Signal />
       <IFrame />
     </div>
   )

@@ -14,7 +14,7 @@ function IFrame() {
         className="bg-transparent h-96 w-[500px]"
         src={customFields.puzzleUrl}
       ></iframe>
-      <ClientWindow className="absolute w-[502px] -translate-x-[501px] -translate-y-4 pointer-events-none" />
+      <ClientWindow className="absolute w-[502px] -translate-x-[501px] -translate-y-4 pointer-events-none opacity-60" />
     </div>
   )
 }

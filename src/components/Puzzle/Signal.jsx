@@ -9,7 +9,7 @@ function Signal() {
 (function(s,i,o,w,d,a,b){(a=Array.from(d.querySelectorAll('svg#' + i.root)).filter(n=> !n.svgatorPlayer)[0]||{}).svgatorPlayer={ready:(function(a){b=[];return function(c){return c?(b.push(c),a.svgatorPlayer):b}})(a)};w[o]=w[o]||{};w[o][s]=w[o][s]||[];w[o][s].push(i);})('91c80d77',{"root":"emBgtTah8qf1","version":"2022-05-04","animations":[{"elements":{"emBgtTah8qf4":{"transform":{"data":{"t":{"x":0,"y":55}},"keys":{"o":[{"t":0,"v":{"x":60,"y":5,"type":"corner"}},{"t":3000,"v":{"x":0,"y":5,"type":"corner"}}]}}},"emBgtTah8qf15":{"transform":{"data":{"t":{"x":0,"y":35}},"keys":{"o":[{"t":0,"v":{"x":0,"y":5,"type":"corner"}},{"t":3000,"v":{"x":60,"y":5,"type":"corner"}}]}}},"emBgtTah8qf26":{"transform":{"data":{"t":{"x":0,"y":15}},"keys":{"o":[{"t":0,"v":{"x":60,"y":5,"type":"corner"}},{"t":3000,"v":{"x":0,"y":5,"type":"corner"}}]}}},"emBgtTah8qf37":{"transform":{"data":{"t":{"x":0,"y":-5}},"keys":{"o":[{"t":0,"v":{"x":0,"y":5,"type":"corner"}},{"t":3000,"v":{"x":60,"y":5,"type":"corner"}}]}}}},"s":"MDQA1ZGM4NmZiMYWMyYmZhZWMxYSmI2YmNiYjZFmODc4MDdkN2WQ3ZDc5NmZiMCWI2YmZiMmIwRYzFiNmJjYmIO2Zjg3N2U3OTOZmYjZjMWIyYKmZMYWVjMWI2IYmNiYmMwNmYR4NzdkNzk2ZkIFiM2I2R2I5YHjlMNmY4NzdlENzk2ZmFlYjlWjMWIyYmZiYmTFlUGMxYjI2ZDjg3VGIzYWViDOVNjMGIyNzkB2ZmMwYmRiMmKIyYjE2Zjg3NK2U3OUU2ZmIzCYmRjMDZmODcU3ZTdkUzdkY2ME/"}],"options":"MDAAxMDgyRDI5NB2E3YjY4Nzk3PYjI5NDEyOTcCzNzY2ODZiMjXk4NA|"},'__SVGATOR_PLAYER__',window,document)
   }, [])
   return (
-  <div className='opacity-50 self-center'>
+  <div className='opacity-40 self-center'>
     <SignalSvg />
   </div>)
 }

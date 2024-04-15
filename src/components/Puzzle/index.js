@@ -12,7 +12,7 @@ function IFrame() {
     <div className="container inline-block w-[500px] m-0 p-0">
       <iframe
         className="bg-transparent h-96 w-[500px]"
-        src={customFields.puzzleUrl}
+        src={'https://c218db58.website-puzzle.pages.dev/'}
       ></iframe>
       <ClientWindow className="absolute w-[502px] -translate-x-[501px] -translate-y-4 pointer-events-none opacity-60" />
     </div>

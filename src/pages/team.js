@@ -1,18 +1,15 @@
-import React from 'react';
-import Layout from '@theme/Layout';
+import React from 'react'
+import Layout from '@theme/Layout'
 
 export default function Team() {
   return (
     <Layout title="The Team" description="Syncosaurus Team Page">
       <section class="bg-white">
-        <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
-          <div class="mx-auto mb-8 max-w-screen-sm lg:mb-16">
-            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">
-              The Team
-            </h2>
-            <p class="font-light text-gray-500 sm:text-xl">
-            </p>
-          </div>
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+          <h2 class="min-w-64 mb-4 text-4xl tracking-tight font-extrabold text-gray-900 text-center">
+            The Team
+          </h2>
+          <p class="font-light text-gray-500 sm:text-xl"></p>
           <div class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
             <div class="text-center text-gray-500">
               <img
@@ -26,10 +23,7 @@ export default function Team() {
               <p>CEO/Co-founder</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
-                  <a
-                    href="#"
-                    class="text-[#39569c] hover:text-gray-900"
-                  >
+                  <a href="#" class="text-[#39569c] hover:text-gray-900">
                     <svg
                       class="w-6 h-6"
                       fill="currentColor"
@@ -45,10 +39,7 @@ export default function Team() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="text-[#00acee] hover:text-gray-900"
-                  >
+                  <a href="#" class="text-[#00acee] hover:text-gray-900">
                     <svg
                       class="w-6 h-6"
                       fill="currentColor"
@@ -60,10 +51,7 @@ export default function Team() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="text-gray-900 hover:text-gray-900"
-                  >
+                  <a href="#" class="text-gray-900 hover:text-gray-900">
                     <svg
                       class="w-6 h-6"
                       fill="currentColor"
@@ -79,10 +67,7 @@ export default function Team() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="text-[#ea4c89] hover:text-gray-900"
-                  >
+                  <a href="#" class="text-[#ea4c89] hover:text-gray-900">
                     <svg
                       class="w-6 h-6"
                       fill="currentColor"
@@ -111,10 +96,7 @@ export default function Team() {
               <p>CTO/Co-founder</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
-                  <a
-                    href="#"
-                    class="text-[#39569c] hover:text-gray-900"
-                  >
+                  <a href="#" class="text-[#39569c] hover:text-gray-900">
                     <svg
                       class="w-6 h-6"
                       fill="currentColor"
@@ -130,10 +112,7 @@ export default function Team() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="text-[#00acee] hover:text-gray-900"
-                  >
+                  <a href="#" class="text-[#00acee] hover:text-gray-900">
                     <svg
                       class="w-6 h-6"
                       fill="currentColor"
@@ -145,10 +124,7 @@ export default function Team() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="text-gray-900 hover:text-gray-900"
-                  >
+                  <a href="#" class="text-gray-900 hover:text-gray-900">
                     <svg
                       class="w-6 h-6"
                       fill="currentColor"
@@ -164,10 +140,7 @@ export default function Team() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="text-[#ea4c89] hover:text-gray-900"
-                  >
+                  <a href="#" class="text-[#ea4c89] hover:text-gray-900">
                     <svg
                       class="w-6 h-6"
                       fill="currentColor"
@@ -197,10 +170,7 @@ export default function Team() {
               <p>Sales</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
-                  <a
-                    href="#"
-                    class="text-[#39569c] hover:text-gray-900"
-                  >
+                  <a href="#" class="text-[#39569c] hover:text-gray-900">
                     <svg
                       class="w-6 h-6"
                       fill="currentColor"
@@ -216,10 +186,7 @@ export default function Team() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="text-[#00acee] hover:text-gray-90"
-                  >
+                  <a href="#" class="text-[#00acee] hover:text-gray-90">
                     <svg
                       class="w-6 h-6"
                       fill="currentColor"
@@ -231,10 +198,7 @@ export default function Team() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="text-gray-900 hover:text-gray-90"
-                  >
+                  <a href="#" class="text-gray-900 hover:text-gray-90">
                     <svg
                       class="w-6 h-6"
                       fill="currentColor"
@@ -250,10 +214,7 @@ export default function Team() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="text-[#ea4c89] hover:text-gray-900"
-                  >
+                  <a href="#" class="text-[#ea4c89] hover:text-gray-900">
                     <svg
                       class="w-6 h-6"
                       fill="currentColor"
@@ -274,5 +235,5 @@ export default function Team() {
         </div>
       </section>
     </Layout>
-  );
+  )
 }

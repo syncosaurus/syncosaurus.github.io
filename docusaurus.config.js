@@ -41,7 +41,7 @@ const config = {
   },
 
   customFields: {
-    puzzleUrl: process.env.PUZZLE_URL,
+    puzzleUrl: 'https://c218db58.website-puzzle.pages.dev',
   },
 
   presets: [

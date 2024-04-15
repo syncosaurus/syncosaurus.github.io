@@ -2,7 +2,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import ClientWindow from '/landing/Client-window2.svg'
 import Signal from './Signal'
 import SignalVertical from './SignalVertical'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function IFrame() {
   const {
@@ -20,9 +20,12 @@ function IFrame() {
 }
 
 export default function Puzzle() {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [windowWidth, setWindowWidth] = useState()
 
-  window.addEventListener('resize', e => setWindowWidth(e.target.innerWidth))
+  useEffect(() => {
+    setWindowWidth(window.innerWidth)
+    window.addEventListener('resize', e => setWindowWidth(e.target.innerWidth))
+  }, [])
 
   if (windowWidth < 1094) {
     return (

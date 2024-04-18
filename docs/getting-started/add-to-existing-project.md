@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Add to an Existing Project
 
 To add Syncosaurus to an existing React-based project:

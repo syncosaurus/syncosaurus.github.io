@@ -12,7 +12,7 @@ The Syncosaurus framework supports token-based authentication. JSON web tokens a
 
 To use a token, you can directly pass a *token string*  to the `Syncosaurus` constructor as the `auth` key's value:
 
-```js
+```js title="/src/components/App.jsx"
 import mutators from './mutators.js';
 
 const synco = new Syncosaurus({
@@ -26,7 +26,7 @@ const synco = new Syncosaurus({
 
  You can also pass an *asynchronous function* that returns a token string to the `Syncosaurus` constructor as the `auth` key's value:
 
-```js
+```js title="/src/components/App.jsx"
 import mutators from './mutators.js';
 import getToken from './auth-client.js';
 
@@ -43,7 +43,7 @@ const synco = new Syncosaurus({
 
 Next, an `authHandler` function needs to be defined:
 
-```js
+```js title="/src/authHandler.js"
 const authServerUrl = `https://www.myAuthServer.com`;
 
 export default async function authHandler(token) {

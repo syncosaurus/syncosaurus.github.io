@@ -12,7 +12,7 @@ At the implementation level, a *subscription* is represented by the return value
 
 Here is a simple implementation of a subscription and its query:
 
-```javascript
+```js
 const count = useSubscribe(synco, (tx) => tx.get('count'), 0)
 ```
 

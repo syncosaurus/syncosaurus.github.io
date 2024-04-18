@@ -4,10 +4,12 @@ sidebar_position: 2
 
 # Add to an Existing Project
 
-To add Syncosaurus to an existing React-based project:
+To add Syncosaurus to an existing React-based project, first navigate to the root directory of your application.
+Then, run the following command in your terminal:
 
-1. Navigate to the root directory of your application
-2. Run the command `npx syncosaurus setup`
+```shell
+npx syncosaurus setup
+```
 
 That's it! Make sure to correctly configure your Syncosaurus application before deployment - see here for details.
 
@@ -17,7 +19,7 @@ Note that Syncosaurus currently only supports applications built with either Rea
 
 A local development environment makes it significantly easier to rapidly iterate, test, and debug your application in a consistent, controlled setting. Syncosaurus comes built-in with a local Syncosaurus server.
 
-If you added Syncosaurus to an existing project and are not using Vite as your build tool, run the same command with the `-b` or `-backendOnly` flag enabled:
+If you have added Syncosaurus to an existing project and are not using Vite as your frontend build tool, run the same command with the `-backendOnly` or `-b` flag enabled:
 
 ```shell
 npx syncosaurus dev -b
@@ -37,7 +39,7 @@ Press 'x' to gracefully shut down the server
 
 Make sure to update your `server` value in your Syncosaurus constructor calls in your application code:
 
-```javascript
+```js title="/src/components/App.jsx"
 import mutators from './mutators.js';
 
 const synco = new Syncosaurus({

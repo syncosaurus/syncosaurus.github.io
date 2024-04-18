@@ -8,7 +8,7 @@ The primary unit of collaboration within a Syncosaurus application is the **room
 
 In Syncosaurus, the room name is specified by passing it to the `launch` method of a `Syncosaurus` instance:
 
-```js
+```js title="/src/components/App.jsx"
 import mutators from './mutators.js';
 
 const synco = new Syncosaurus({

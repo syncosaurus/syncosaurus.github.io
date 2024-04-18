@@ -13,7 +13,7 @@ Because mutators are just high-level Javascript functions, the developer gains a
 
 The function `increment` below is an example of a mutator:
 
-```javascript
+```js title="/src/mutators.js"
 function increment(tx, { key, delta }) {
   const prev = tx.get(key);
   const next = (prev ?? 0) + delta;

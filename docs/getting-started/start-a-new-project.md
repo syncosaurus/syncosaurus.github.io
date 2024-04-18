@@ -47,7 +47,7 @@ Press 'x' to gracefully shut down both servers
 
 Make sure to update your `server` value in your Syncosaurus constructor calls in your application code:
 
-```javascript
+```js title="/src/components/App.jsx"
 import mutators from './mutators.js';
 
 const synco = new Syncosaurus({

@@ -7,8 +7,6 @@
 import 'dotenv/config'
 import { themes as prismThemes } from 'prism-react-renderer'
 import tailwindPlugin from './plugins/tailwind-config.cjs'
-import remarkMath from 'remark-math'
-import rehypeKatex from 'rehype-katex'
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -53,9 +51,7 @@ const config = {
           sidebarPath: './sidebars.js',
           sidebarCollapsed: false,
         },
-        blog: {
-          showReadingTime: true,
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },

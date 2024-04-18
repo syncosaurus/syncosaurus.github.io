@@ -1,38 +1,36 @@
-import clsx from "clsx";
-import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Layout from "@theme/Layout";
-import HomepageFeatures from "@site/src/components/HomepageFeatures";
-import Puzzle from "@site/src/components/Puzzle";
+import clsx from 'clsx'
+import Link from '@docusaurus/Link'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import Layout from '@theme/Layout'
+import HomepageFeatures from '@site/src/components/HomepageFeatures'
+import Puzzle from '@site/src/components/Puzzle'
 
-import Heading from "@theme/Heading";
-import styles from "./index.module.css";
+import Heading from '@theme/Heading'
+import styles from './index.module.css'
 
 function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext()
   return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Puzzle />
-          <Link
-            className="button button--secondary button--lg"
-            to="/case-study"
-          >
-            Read the Case Study
-          </Link>
-        </div>
+    <header className="flex flex-col text-center items-center py-16 bg-gradient-to-br from-slate-900 via-slate-800 to-syncoBlue">
+      <Puzzle />
+      <h1 className="text-4xl font-bold text-white m-8">{siteConfig.title}</h1>
+      <p className="text-xl py-6 text-white min-w-96 max-w-screen-lg">
+        {siteConfig.tagline}
+      </p>
+      <div className="py-10">
+        <Link
+          className="bg-white rounded-md text-gray-500 px-4 py-2"
+          to="/case-study"
+        >
+          Read the case study
+        </Link>
       </div>
     </header>
-  );
+  )
 }
 
 export default function Home() {
-  const { siteConfig } = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext()
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
@@ -43,5 +41,5 @@ export default function Home() {
         <HomepageFeatures />
       </main>
     </Layout>
-  );
+  )
 }

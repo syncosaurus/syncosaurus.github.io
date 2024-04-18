@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Analytics
 
 Syncosaurus includes an application analytics tool to easily view and analyze aggregate and single-room metrics for your Syncosaurus application.

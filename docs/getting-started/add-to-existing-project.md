@@ -34,13 +34,12 @@ Press 'x' to gracefully shut down the server
 Make sure to update your `server` value in your Syncosaurus constructor calls in your application code:
 
 ```javascript
-import { v4 as uuidv4 } from 'uuid';
 import mutators from './mutators.js';
 
 const synco = new Syncosaurus({
 	// update this value to the local Syncosaurus server URL
 	server: "http://localhost:8787",
-	userID: uuidv4(),
+	userID: "my-user-id",
 	auth: "4fJbGOWma=QEebX6H1X6AAe3/yok1R-fwKMqot5XOvxPU0YwI!sm8nQ!"
 	mutators,
 });

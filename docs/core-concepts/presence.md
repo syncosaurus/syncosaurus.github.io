@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Presence
 
 As its name implies, **presence** allows for information on connected clients to be broadcast. Data like who is currently connected in a room, where each client's cursor is in the app, or the latest status update for each client are "ephemeral", *lasting only as long as that client is connected.* Thus, since this data is by definition temporary, these updates should be treated differently from client updates that may affect the shared application state. Presence data is effectively received, possibly transformed, and then immediately broadcasted.

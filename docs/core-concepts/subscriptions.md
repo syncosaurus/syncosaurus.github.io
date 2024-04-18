@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Subscriptions
 
 A **subscription** allows clients to monitor if and when changes occur to the shared state of a room, regardless if the source of a change is local or from the authoritative server.

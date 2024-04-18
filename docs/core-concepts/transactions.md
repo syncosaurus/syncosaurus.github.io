@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Transactions
 
 A **transaction** represents a single update, which can be either from a client to the server, or the server to a client.
@@ -10,4 +14,4 @@ A transaction, as an instance of the `transaction` class, consists of:
 
 In Syncosaurus, transactions are categorized as either *read transactions* or *write transactions*. As their names imply, transactions are either observing or changing a specified part of the shared application state.
 
-It is specifically through *write transactions* that [mutations](https://syncosaurus.github.io/docs/categories/core-concepts/mutators) are applied to the shared state of a collaborative application.
+It is specifically through *write transactions* that [mutations](https://syncosaurus.github.io/docs/core-concepts/mutators) are applied to the shared state of a collaborative application.

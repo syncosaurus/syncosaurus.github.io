@@ -1,4 +1,8 @@
-# Configuration (`syncosaurus.json`)
+---
+sidebar_position: 3
+---
+
+# Configuration
 
 Configuration options for Syncosaurus are set with the `syncosaurus.json` file in the root directory of your Syncosaurus project.
 
@@ -17,7 +21,7 @@ The default value of `msgFrequency` is `16` (ms), which equates to approximately
 
 ### `useStorage`
 
-This value determines whether your application persists data to the Syncosaurus server using [Cloudflare's Transactional Storage API] (https://developers.cloudflare.com/durable-objects/api/transactional-storage-api/)
+This value determines whether your application persists data to the Syncosaurus server using [Cloudflare's Transactional Storage API](https://developers.cloudflare.com/durable-objects/api/transactional-storage-api/)
 
 The default value of `useStorage` is `false`.
 

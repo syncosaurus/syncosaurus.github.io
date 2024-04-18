@@ -12,7 +12,7 @@ That's it! Follow the prompts to set up your new Syncosaurus project.
 
 ## Spin up a local development environment
 
-A local development environment makes it significantly easier to rapidly iterate, test, and debug your application in a consistent, controlled setting. Syncosaurus comes built-in with both a local Syncosaurus server. If you are building a Syncosaurus project from scratch using `syncosaurus init`, Syncosaurus includes a local Vite UI server as well!
+A local development environment makes it significantly easier to rapidly iterate, test, and debug your application in a consistent, controlled setting. Syncosaurus comes built-in with both a local Syncosaurus server. If you are building a Syncosaurus project from scratch using `syncosaurus init`, Syncosaurus includes a local Vite UI server as well.
 
 To start both the Syncosaurus server and the Vite UI server, run the following command in your terminal:
 
@@ -44,13 +44,12 @@ Press 'x' to gracefully shut down both servers
 Make sure to update your `server` value in your Syncosaurus constructor calls in your application code:
 
 ```javascript
-import { v4 as uuidv4 } from 'uuid';
 import mutators from './mutators.js';
 
 const synco = new Syncosaurus({
 	// update this value to the local Syncosaurus server URL
 	server: "http://localhost:8787",
-	userID: uuidv4(),
+	userID: "my-user-id"
 	auth: "4fJbGOWma=QEebX6H1X6AAe3/yok1R-fwKMqot5XOvxPU0YwI!sm8nQ!"
 	mutators,
 });
@@ -85,7 +84,7 @@ If your application was configured correctly, the URL to your deployed applicati
 Evolving your Syncosaurus server... done!
 
 ✅ Success! Your Syncosaurus server is available at
-  https://kitten.josephliang.workers.dev
+  https://my-cool-app.johnsmith.workers.dev
 ```
 
-For instructions on deploying your frontend, see here.
+To deploy your frontend, simply add this URL as an environment variable for your frontend deployment.

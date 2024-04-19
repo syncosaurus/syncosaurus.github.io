@@ -1,5 +1,8 @@
 import Dia2ClientChangesSync from './diagrams/Dia2ClientChangesSync.jsx'
 import LatencySlider from '@site/src/components/LatencySlider/LatencySlider'
+import TodoList from '@site/src/components/TodoList/TodoList'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 ## Overview
 
@@ -34,24 +37,14 @@ Given this and the predominance of the client-server architecture in web apps, w
 
 On the surface, building real-time collaborative applications may not seem any different than building other web applications, however, if we break down each word of “real-time collaboration” into more concrete and technical definitions, we quickly realize that is not the case.
 
-## Introduction
+<Tabs>
+  <TabItem value="mutators" label="mutators.js">
+    ``` Javascript console.log('hello') console.log('hello') ```
+  </TabItem>
+  <TabItem value="subscriptions" label="subscriptions.js">
+    ``` Javascript console.log('subscriptions'); console.log('subscriptions');
+    ```
+  </TabItem>
+</Tabs>
 
-## Purpose of the Study
-
-## Methodology
-
-### Data Collection
-
-### Analysis Techniques
-
-## Findings
-
-### Key Discoveries
-
-### Implications
-
-## Conclusion
-
-### Summary of Results
-
-### Future Directions
+<TodoList />

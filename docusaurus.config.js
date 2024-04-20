@@ -12,7 +12,7 @@ import tailwindPlugin from './plugins/tailwind-config.cjs'
 const config = {
   title: 'Syncosaurus',
   tagline:
-    'Syncosaurus is a React-and-Javascript-based framework for building real-time, collaborative React applications backed by the Cloudflare edge network of Workers and Durable Objects.',
+    "A performant, collaborative, real-time Javascript framework that enables developers to focus on their application's features and business logic, instead of the complexities of state synchronization and conflict resolution.",
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -62,8 +62,6 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
       navbar: {
         title: 'Syncosaurus',
         logo: {
@@ -76,7 +74,7 @@ const config = {
           { type: 'doc', label: 'Docs', docId: 'index', position: 'right' },
           {
             to: 'https://github.com/syncosaurus',
-            label: 'GitHub',
+            label: 'Github',
             position: 'right',
           },
         ],
@@ -97,8 +95,12 @@ const config = {
                 to: '/case-study',
               },
               {
-                label: 'Team',
+                label: 'The Team',
                 to: '/team',
+              },
+              {
+                label: 'Docs',
+                to: '/docs',
               },
               {
                 label: 'GitHub',

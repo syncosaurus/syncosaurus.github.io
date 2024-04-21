@@ -42,16 +42,24 @@
   width: 99.5%;
   align-self: center;
   background-color: white;
-  opacity: 90%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-bottom: 0.25rem;
+  opacity: 92%;
   outline: none;
   border-bottom-right-radius: 1.5rem; /* 24px */
   border-bottom-left-radius: 1.5rem; /* 24px */
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   font-weight: bold;
+  z-index: 500;
 }
 
 .navbar__items {
   font-weight: bold;
+}
+
+.navbar__items a:hover {
+  color: #7ED348;
 }
 
 .col--2 {

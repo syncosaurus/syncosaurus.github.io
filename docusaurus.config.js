@@ -12,7 +12,7 @@ import tailwindPlugin from './plugins/tailwind-config.cjs'
 const config = {
   title: 'Syncosaurus',
   tagline:
-    "A performant, collaborative, real-time Javascript framework that enables developers to focus on their application's features and business logic, instead of the complexities of state synchronization and conflict resolution.",
+    "An open-source framework for real-time, collaborative web applications",
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here

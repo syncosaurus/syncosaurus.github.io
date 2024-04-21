@@ -29,7 +29,7 @@ function HomepageHeader() {
 
   return (
     // rounded-2xl bg-indigo-50 py-10 overflow-hidden m-5 lg:m-0 2xl:py-16 xl:py-8  lg:rounded-tl-2xl lg:rounded-bl-2xl
-    <div id="hero-landing" className="backdrop-blurshadow-md rounded-3xl overflow-hidden m-5 lg:m-0 2xl:py-16 xl:py-8 py-10 flex flex-col text-center items-center min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-syncoBlue">
+    <div id="hero-landing" className="font-sans rounded-3xl overflow-hidden m-5 lg:m-0 2xl:py-16 xl:py-8 py-10 flex flex-col text-center items-center min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-syncoBlue">
       <Puzzle />
       <h1 className="text-4xl font-bold text-white m-8">{siteConfig.title}</h1>
       <p className="text-2xl text-white min-w-96 max-w-screen-lg">

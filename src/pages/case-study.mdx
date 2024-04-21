@@ -8,61 +8,18 @@ import TodoList from '@site/src/components/TodoList/TodoList'
 import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 
-## Overview
-
-<LatencySlider />
-
-Syncosaurus is a React Javascript developer framework for rapidly building real-time, collaborative applications backed by the Cloudflare edge network of Workers and Durable Objects
-In this case study, we will:
-
-- define real-time collaborative applications
-- explain why they are not trivial to build
-- explore existing solutions
-- discuss core concepts to understand and use Syncosaurus
-- explain how Syncosaurus was built
-- discuss potential future improvements
-
-### Preface on architecture
-
-At a fundamental level when multiple users are “collaborating” on the same artifact, they are exchanging data to manipulate the synchronized view of the artifact. Practically, this means that all users who are observing and making changes to the artifact on the web application will need to exchange information back and forth in real-time via the open internet.
-
-Although there are numerous architectures for web applications, they can broadly be categorized as:
-
-- **Centralized** such as the client-server architecture where client machines send resource requests to a backend server. In the client-server architecture, the server is generally authoritative, meaning it is the source of truth.
-
-<Dia2ClientChangesSync />
-
-- **Decentralized** such as the peer-to-peer architecture where every machine (known as a node) is treated equally and responsible for sending and responding to requests for resources. In the peer-to-peer architecture, every machine has equal authority and a consensus must usually be reached to determine the truth.
-
-Though it is possible to build decentralized real-time collaboration web apps, it is notoriously complex and many existing real-time collaborative apps use a form of the client-server architecture. This is because the client-server architecture is often more efficient and easier to maintain, although, it does introduce a single point of failure risk.
-Given this and the predominance of the client-server architecture in web apps, we will assume that any application considering Syncosaurus will be using some form of a centralized backend. Note that the centralized backend of a client-server architecture can be made up of many servers in the case of a distributed client-server architecture, however, we will still refer to the backend collectively as the “server”.
-
-# Building Real-Time Collaborative Applications Is Not Trivial
-
-On the surface, building real-time collaborative applications may not seem any different than building other web applications, however, if we break down each word of “real-time collaboration” into more concrete and technical definitions, we quickly realize that is not the case.
-
-<Tabs>
-  <TabItem value="mutators" label="mutators.js">
-    ``` Javascript console.log('hello') console.log('hello') ```
-  </TabItem>
-  <TabItem value="subscriptions" label="subscriptions.js">
-    ``` Javascript console.log('subscriptions'); console.log('subscriptions');
-    ```
-  </TabItem>
-</Tabs>
-
-<TodoList />
-
 # Overview
 
-- Syncosaurus is a React-Javascript developer framework for rapidly building browser-based real-time, collaborative web applications
-- In this case study, we will:
-  - define real-time collaborative applications
-  - explain why real-time collaborative applications are not trivial to build
-  - compare existing solutions used to facilitate building collaborative applications, including Syncosaurus
-  - discuss how to use Syncosaurus
-  - explain how Syncosaurus was built
-  - discuss future improvements for Syncosaurus
+Syncosaurus is a React-Javascript developer framework for rapidly building browser-based real-time, collaborative web applications backed by Cloudflare Workers and Durable Objects.
+
+In this case study, we will:
+
+- Define real-time collaborative applications
+- Explain why real-time collaborative applications are not trivial to build
+- Compare existing solutions used to facilitate building collaborative applications, including Syncosaurus
+- Discuss how to use Syncosaurus
+- Explain how Syncosaurus was built
+- Discuss future improvements for Syncosaurus
 
 # Introduction
 
@@ -83,23 +40,19 @@ At a fundamental level when multiple users are “collaborating” on the same a
 - Centralized
 - Decentralized
 
-### Centralized
-
 Centralized includes the client-server architecture where client machines send resource requests to a backend server. In the client-server architecture, the server is generally [authoritative](https://medium.com/mighty-bear-games/what-are-server-authoritative-realtime-games-e2463db534d1), meaning it is the source of truth.
 
 [graphic here]
 
-### Decentralized
-
-Decentralized includes the peer-to-peer architecture where every machine (known as a node) is treated equally and is responsible for sending for and responding to requests for resources. In the peer-to-peer architecture, every machine has equal authority and a consensus must usually be reached to determine the truth
+Decentralized includes the peer-to-peer architecture where every machine (known as a node) is treated equally and is responsible for sending for and responding to requests for resources. In the peer-to-peer architecture, every machine has equal authority and a consensus must usually be reached to determine the truth.
 
 [graphic here]
 
-Though [it is possible](https://www.tag1consulting.com/blog/yjs-webrtc-part-1) to build decentralized real-time collaboration web apps, decentralized architectures are notoriously complex. Instead [many existing real-time collaborative apps use a form of the client-server architecture](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/) due to their comparative [efficiency and ease of maintenance](https://fwx.finance/learn/article/centralized-app-vs-dapp). Therefore, we will assume that any application considering Syncosaurus will be using a form of centralized architecture
+Though [it is possible](https://www.tag1consulting.com/blog/yjs-webrtc-part-1) to build decentralized real-time collaboration web apps, decentralized architectures are notoriously complex. Instead [many existing real-time collaborative apps use a form of the client-server architecture](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/) due to their comparative [efficiency and ease of maintenance](https://fwx.finance/learn/article/centralized-app-vs-dapp). Therefore, we will assume that any application considering Syncosaurus will be using a form of centralized architecture.
 
 # Building Real-Time Collaborative Applications Is Not Trivial
 
-Initially, building real-time collaborative web apps may not seem different than building other web apps, however, if we break down each word of “real-time collaboration” into more concrete requirements, we quickly realize that is not the case
+Initially, building real-time collaborative web apps may not seem different than building other web apps, however, if we break down each word of “real-time collaboration” into more concrete requirements, we quickly realize that is not the case.
 
 ## What Does Real-time Entail?
 
@@ -115,9 +68,9 @@ The need for real-time depends on the web application and generally apps that mi
 - [Collaborative productivity and e-learning](https://www.mdpi.com/2079-9292/11/24/4152)
 - [Video conferencing](https://21stcenturyav.com/good-latency-for-video-conferencing/)
 
-To illustrate this need and the impact latency can have on a user’s experience, use the demo below and notice how increased latency causes a noticeable delay in changing the red circle’s position to match the blue one:
+To illustrate this need and the impact latency can have on a user’s experience, drag the blue slider below and notice how higher latencies cause a noticeable delay in updating the red slider’s position to match:
 
-[graphic here]
+<LatencySlider />
 
 ### Achieving Real-time Communication
 
@@ -127,7 +80,7 @@ At the application layer of the internet, HTTP underpins much of the communicati
 - WebSockets
 - WebTransport
 
-Note that using [streams over HTTP/2](https://getstream.io/blog/communication-protocols/) was also considered due to its bi-directional nature and built-in multiplexing, however, the need to broadcast data to multiple clients in real-time collaborative apps (which we will discuss later) made them unsuitable for our purposes
+Note that using [streams over HTTP/2](https://getstream.io/blog/communication-protocols/) was also considered due to its bi-directional nature and built-in multiplexing, however, the need to broadcast data to multiple clients in real-time collaborative apps (which we will discuss later) made them unsuitable for our purposes.
 
 #### Long Polling
 
@@ -135,7 +88,7 @@ Long polling is a technique to emulate server push communications via normal HTT
 
 [graphic here]
 
-Although every browser supports long polling, it has high latency compared to other options such as WebSockets, and a risk of missing messages without extensive code on the client and server. Therefore, long polling [is generally better suited as a fallback option as opposed to a primary means of bi-directional communication](https://ably.com/topic/long-polling#:~:text=HTTP%20long%20polling%20solves%20the,make%20requests%20and%20servers%20respond.)
+Although every browser supports long polling, it has high latency compared to other options such as WebSockets, and a risk of missing messages without extensive code on the client and server. Therefore, long polling [is generally better suited as a fallback option as opposed to a primary means of bi-directional communication](https://ably.com/topic/long-polling#:~:text=HTTP%20long%20polling%20solves%20the,make%20requests%20and%20servers%20respond.).
 
 #### WebSockets
 
@@ -143,9 +96,9 @@ Although every browser supports long polling, it has high latency compared to ot
 
 [graphic here]
 
-Once the handshake is complete, the WebSocket connection is established and both parties are now free to transmit data at any time
+Once the handshake is complete, the WebSocket connection is established and both parties are now free to transmit data at any time.
 
-Overall, Websockets are [low latency compared to HTTP](https://ably.com/topic/websockets-pros-cons) and [are widely supported in modern browsers](https://caniuse.com/websockets), though they can be somewhat tricky to scale and maintain in production because the connections [have to remain open and there is a risk of message loss when connections are interrupted](https://ably.com/topic/websockets-pros-cons)
+Websockets are [low latency compared to HTTP](https://ably.com/topic/websockets-pros-cons) and [are widely supported in modern browsers](https://caniuse.com/websockets), though they can be somewhat tricky to scale and maintain in production because the connections [have to remain open and there is a risk of message loss when connections are interrupted](https://ably.com/topic/websockets-pros-cons).
 
 #### WebTransport
 
@@ -153,7 +106,7 @@ WebTransport is an application layer protocol built on the [QUIC protocol, a mor
 
 While the characteristics of WebTransport make it seem like a strong [fit for real-time collaborative ](https://www.videosdk.live/blog/websocket-vs-webtransport#what-is-websocket)web apps, the technology has [yet to reach the same level of browser support as previously mentioned options](https://caniuse.com/webtransport).
 
-### Choosing A Technique
+### Choosing a Technique
 
 With real-time collaborative apps requiring a communication option with low latency, bi-directional messaging, wide browser support, and minimal data loss, many developers, including us, opt to use WebSockets. Though, as noted Websockets are not without their concerns, which will be discussed later in the case study.
 
@@ -175,7 +128,9 @@ If we assume the app is using a client-server architecture where the clients do 
 
 ### Consistency vs Latency
 
-One may assume that because our application is using WebSockets, the information would travel fast enough to meet real-time latency requirements. However, depending on where the backend server(s) is located (among other factors), [the distance between the client and the server can increase latency](https://www.inkandswitch.com/local-first/#1-no-spinners-your-work-at-your-fingertips). Unfortunately, this latency can create a laggy user experience for the change-initiating client while it waits to communicate with the server (note that this discussion alludes to the inverse relationship between state consistency and latency which is described by the [PACELC theorem](https://www.scylladb.com/glossary/pacelc-theorem/)). Using our whiteboard example, you can see that the users have a different experience when latency is introduced:
+One may assume that because our application is using WebSockets, the information would travel fast enough to meet real-time latency requirements. However, depending on where the backend server(s) is located (among other factors), [the distance between the client and the server can increase latency](https://www.inkandswitch.com/local-first/#1-no-spinners-your-work-at-your-fingertips). Unfortunately, this latency can create a laggy user experience for the change-initiating client while it waits to communicate with the server (note that this discussion alludes to the inverse relationship between state consistency and latency which is described by the [PACELC theorem](https://www.scylladb.com/glossary/pacelc-theorem/)).
+
+Using our whiteboard example, you can see that the users have a different experience when latency is introduced:
 
 [graphic here]
 
@@ -193,7 +148,9 @@ The edge network is a distributed computing paradigm that brings computation and
 
 Next, while [tuning our WebSocket messaging](https://pusher.com/blog/websockets-realtime-gaming-low-latency/#websockets-to-reduce-latency-and-ensure-smooth-gameplay) to be more performant could also help in reducing latency, this strategy reaches diminishing returns because there will always be at least some latency in the network. Therefore, it will only get us so far.
 
-Finally, [optimistically updating the client’s UI](https://javascript.plainenglish.io/what-is-optimistic-ui-656b9d6e187c#:~:text=An%20Optimistic%20User%20Interface%20is%20a%20design,a%20user%20performs%20an%20action%20(such%20as%E2%80%A6) (known as [client-side prediction](https://en.wikipedia.org/wiki/Client-side_prediction) in the gaming world) takes a different approach - instead of seeking to reduce actual latency, it seeks to reduce [perceived latency](https://developer.mozilla.org/en-US/docs/Learn/Performance/Perceived_performance) (i.e. how fast a website seems to the user), which as [demonstrated in product design](https://medium.com/@danielpidcock/actual-usability-vs-perception-of-usability-db236cd77bde) is often just as powerful. For our whiteboard application, this means the latency will still exist, but it will not be as apparent to the user. Optimistic UI works like this:
+Finally, [optimistically updating the client’s UI](https://javascript.plainenglish.io/what-is-optimistic-ui-656b9d6e187c#) (known as [client-side prediction](https://en.wikipedia.org/wiki/Client-side_prediction) in the gaming world) takes a different approach - instead of seeking to reduce actual latency, it seeks to reduce [perceived latency](https://developer.mozilla.org/en-US/docs/Learn/Performance/Perceived_performance) (i.e. how fast a website seems to the user), which as [demonstrated in product design](https://medium.com/@danielpidcock/actual-usability-vs-perception-of-usability-db236cd77bde) is often just as powerful. For our whiteboard application, this means the latency will still exist, but it will not be as apparent to the user.
+
+Optimistic UI works like this:
 
 [graphic here]
 
@@ -233,17 +190,17 @@ However, if a change is meant to be [deterministic](https://en.wikipedia.org/wik
 
 [graphic here]
 
-The process of transactional conflict resolution is somewhat simple to reason about and [works as follows](https://rocicorp.dev/blog/ready-player-two):
+The process of transactional conflict resolution is somewhat simple to reason about.
 
-- If two clients make a concurrent change to the same object but modify a different property, no conflicts occur. Because clients only send the **intent **of a change, these can both be processed in the order of arrival by the server
-
-[graphic here]
-
-- When concurrent changes occur to the same property, a conflict occurs. By default, the server resolves this conflict using a simple [Last Write Wins](https://dzone.com/articles/conflict-resolution-using-last-write-wins-vs-crdts) (LWW) approach. The server then broadcasts the resolved state to all clients.
+If two clients make a concurrent change to the same object but modify a different property, no conflicts occur. Because clients only send the intent of a change, these can both be processed in the order of arrival by the server
 
 [graphic here]
 
-- However, depending on the application, it is possible to build in any custom conflict resolution that would override the default Last Write Wins Behavior
+When concurrent changes occur to the same property, a conflict occurs. By default, the server resolves this conflict using a simple [Last Write Wins](https://dzone.com/articles/conflict-resolution-using-last-write-wins-vs-crdts) (LWW) approach. The server then broadcasts the resolved state to all clients.
+
+[graphic here]
+
+However, depending on the application, it is possible to build in any custom conflict resolution that would override the default Last Write Wins Behavior
 
 While this strategy may not be best suited for use cases where LLW is not the desired default resolution strategy or for decentralized architectures, it is highly flexible and easy to reason about
 
@@ -268,11 +225,13 @@ OT is a technique to solve conflicts using [a set of algorithms that compare con
 
 [graphic here]
 
-Much like CRDTs, OT is known to be complex to reason about and can [theoretically be implemented in a distributed fashion](https://digitalfreepen.com/2018/01/04/operational-transform-hard.html), however, it is overly complex so most OT implementations rely on a central server, which is still complex to implement itself. Unlike CRDTs, however, OT [is known to be less overhead](https://news.ycombinator.com/item?id=23806285#:~:text=You%20can%20approximately%20view%20it,store%20a%20lot%20of%20metadata.).
+Much like CRDTs, OT is known to be complex to reason about and can [theoretically be implemented in a distributed fashion](https://digitalfreepen.com/2018/01/04/operational-transform-hard.html), however, it is overly complex so most OT implementations rely on a central server, which is still complex to implement itself.
+
+Unlike CRDTs, however, OT [is known to be less overhead](https://news.ycombinator.com/item?id=23806285#:~:text=You%20can%20approximately%20view%20it,store%20a%20lot%20of%20metadata.).
 
 ### Choosing a Strategy
 
-As illustrated, no one-size-fits-all solution for conflict resolution exists because it depends on developer preference, application requirements, and the application’s architecture. However, because transactional conflict resolution meshes well with the client-server model, is the most flexible (it can even be used in tandem with CRDTs), and gives control back to the developer to resolve any conflict how they see fit, it is a natural fit for many real-time collaborative applications
+As illustrated, no one-size-fits-all solution for conflict resolution exists because it depends on developer preference, application requirements, and the application’s architecture. However, because transactional conflict resolution meshes well with the client-server model, is the most flexible (it can even be used in tandem with CRDTs), and gives control back to the developer to resolve any conflict how they see fit, it is a natural fit for many real-time collaborative applications.
 
 ## Real-time Collaboration in an Application
 
@@ -294,25 +253,30 @@ Finally, let’s assume we want to extend our whiteboard application to allow cl
 
 Now that we understand some of the considerations of building real-time collaborative applications, let’s imagine we were to follow through with the implementation of our whiteboard application. Broadly, we’d have two options:
 
-- **DIY** - provision infrastructure and build everything from scratch and/or integrate existing tools
-- **Commercial** - use a comprehensive framework that addresses infrastructure, state syncing, and conflict resolution for real-time collaborative applications
+- DIY which means provisionining infrastructure and building everything from scratch and/or integrating existing tools
+- Commercial which means using a comprehensive framework that addresses infrastructure, state syncing, and conflict resolution for real-time collaborative applications
 
 ## DIY
 
 From a simplified perspective, implementing a DIY solution will consist of the following steps:
 
-- Deploy Infrastructure:
-  1. Choose a cloud provider (e.g. AWS)
-  2. Set up servers to maintain WebSocket connections
-  3. Set up persistent storage for documents
-  4. Set up routing for clients
-- Write application code: 5. Research and implement a conflict-resolution and state-syncing strategy (e.g. [YJS](https://yjs.dev/) could be used for CRDTs) 6. Write backend logic to handle updates from clients, manage shared state via the chosen conflict-resolution strategy, persist state to storage, and broadcast updates to clients via WebSockets 7. Write client logic to capture user events, make changes to the state, implement optimistic UI, and communicate with the server
+1. Deploy Infrastructure:
+   1. Choose a cloud provider (e.g. AWS)
+   2. Set up servers to maintain WebSocket connections
+   3. Set up persistent storage for documents
+   4. Set up routing for clients
+2. Write application code:
+   1. Research and implement a conflict-resolution and state-syncing strategy (e.g. [YJS](https://yjs.dev/) could be used for CRDTs)
+   2. Write backend logic to handle updates from clients, manage shared state via the chosen conflict-resolution strategy, persist state to storage, and broadcast updates to clients via WebSockets
+   3. Write client logic to capture user events, make changes to the state, implement optimistic UI, and communicate with the server
 
 As you can see, building from scratch is quite an undertaking, even if you take advantage of existing tools. However, this approach does offer greater control and customization over the entire system.
 
 ## Commercial
 
-Some of the most notable commercial solutions are [Liveblocks](https://liveblocks.io/) and [Reflect](https://reflect.net/), which are primarily differentiated by the conflict resolution model each one employs. These commercial solutions offer convenience by abstracting much of the discussed complexity of a DIY solution by automatically deploying the infrastructure and handling the backend logic while exposing a client-side SDK to developers. However, this convenience comes with a price - these solutions each use a monthly [freemium](https://www.investopedia.com/terms/f/freemium.asp#:~:text=our%20editorial%20policies-,What%20Is%20Freemium%3F,for%20supplemental%20or%20advanced%20features.) pricing model. Liveblocks paid tiers start at $99 / month and Reflect paid tiers start at $30 / month as of the time of writing this. Additionally, using a commercial solution limits the amount of control and customization the developer has over the backend of their application.
+Some of the most notable commercial solutions are [Liveblocks](https://liveblocks.io/) and [Reflect](https://reflect.net/), which are primarily differentiated by the conflict resolution model each one employs. These commercial solutions offer convenience by abstracting much of the discussed complexity of a DIY solution by automatically deploying the infrastructure and handling the backend logic while exposing a client-side SDK to developers.
+
+However, this convenience comes with a price - these solutions each use a monthly [freemium](https://www.investopedia.com/terms/f/freemium.asp#:~:text=our%20editorial%20policies-,What%20Is%20Freemium%3F,for%20supplemental%20or%20advanced%20features.) pricing model. Liveblocks paid tiers start at $99 / month and Reflect paid tiers start at $30 / month as of the time of writing this. Additionally, using a commercial solution limits the amount of control and customization the developer has over the backend of their application.
 
 ## Where does Syncosaurus fit in?
 
@@ -320,7 +284,64 @@ Syncosaurus is a React Javascript client-side SDK with full ready-to-be-deployed
 
 Similar to commercial solutions like Liveblocks and Reflect, Syncosaurus exposes a client-side SDK while abstracting the backend logic and handling much of the deployment - the only thing a developer has to do to get the backend deployed is sign up for a Cloudflare account and use our CLI to deploy. However, unlike the commercial solutions, the Syncosaurus framework is free to use and open source so a developer can alter the default backend code if they choose.
 
-[insert comparison table]
+<table>
+  <tr>
+    <td></td>
+    <td>DIY</td>
+    <td>Liveblocks</td>
+    <td>Reflect</td>
+    <td>Syncosaurus</td>
+  </tr>
+  <tr>
+    <td>Open-source</td>
+    <td>✅</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td>Managed Service</td>
+    <td>❌</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>❌</td>
+  </tr>
+  <tr>
+    <td>Easy to Deploy</td>
+    <td>❌</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td>Conflict Resolution Mechanism</td>
+    <td>Any</td>
+    <td>CRDTs</td>
+    <td>Transactional Conflict Resolution</td>
+    <td>Transactional Conflict Resolution</td>
+  </tr>
+  <tr>
+    <td>Authentication Support</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td>Offline Client Support</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>❌</td>
+  </tr>
+  <tr>
+    <td>Analytics</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+  </tr>
+</table>
 
 # Using Syncosaurus
 
@@ -341,7 +362,7 @@ As mentioned, Syncosaurus uses a real-time syncing model with transactional conf
 
 - When more than one client is connected to a given room, any mutations from one client are broadcast to all other clients by the server. Because an update from the server is authoritative, all client states are guaranteed to converge.
 
-[graphic here])
+[graphic here]
 
 ## Development
 
@@ -426,19 +447,108 @@ A subscription to get all todos could look like this:
   );
 ```
 
-### Putting it together
+### Putting it all together
 
-We have prepared a sample todo list application to demonstrate the mutator and client code and the behavior we expect.
+We have prepared a simple todo list application to illustrate the mutator and client code and the behavior we expect.
 
-[insert code example]
+<Tabs>
+  <TabItem value="mutators" label="mutators.js">
+    ```Javascript 
+      export default {
+        addTodo,
+        removeTodo,
+      }
 
-Go ahead and enter some todos into Client 1:
+      function addTodo(tx, { id, text }) {
+        const todo = { id, text, complete: false }
+        tx.set(`todo/${id}`, todo)
+        return todo
+      }
 
-[insert todo list demo]
+      function removeTodo(tx, { id }) {
+        tx.delete(`todo/${id}`)
+      }
+    ```
+
+  </TabItem>
+  <TabItem value="client" label="client.jsx">
+    ```Javascript
+      import { useState } from 'react'
+      import Syncosaurus from 'syncosaurus'
+      import { useSubscribe } from 'syncosaurus'
+      import mutators from '../mutators.js'
+
+      const synco = new Syncosaurus({
+        mutators,
+        userID: '1234',
+        server: import.meta.env.VITE_DO_URL,
+      })
+
+      synco.launch('yourRoomID')
+
+      export default function App() {
+        const [inputValue, setInputValue] = useState('')
+
+        function handleChange(e) {
+          setInputValue(e.target.value)
+        }
+
+        function handleSubmit(e) {
+          e.preventDefault()
+          synco.mutate.addTodo({
+            id: uuidv4(),
+            text: inputValue,
+          })
+
+          setInputValue('')
+        }
+
+        function handleDelete(id) {
+          synco.mutate.removeTodo({ id })
+        }
+
+        const todos = useSubscribe(
+          synco,
+          tx => {
+            let todoObject = tx.scan(key => {
+              return key.includes('todo')
+            })
+            return Object.values(todoObject)
+          },
+          []
+        )
+
+        return (
+          <div>
+            <form>
+              <input type="text" value={inputValue} onChange={handleChange} />
+              <button onClick={handleSubmit}>Add Todo</button>
+            </form>
+            <ul>
+              {todos.map(todo => (
+                <li key={todo.id}>
+                  {todo.text}
+                  <button onClick={() => handleDelete(todo.id)}>Delete</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    ```
+
+  </TabItem>
+</Tabs>
+
+Go ahead and enter some todos into Client 1 and watch them appear on Client 2 after a simulated latency of 1 second:
+
+<TodoList />
 
 ## Deployment
 
 After you’re satisfied with the local version of the application, it can be deployed to Cloudflare by running `npx syncosaurus deploy`. Your deployed Cloudflare architecture will consist of Cloudflare Workers and Durable Objects. For each room your clients create, a new Durable Object will be created and any client will be able to connect to it through a worker:
+
+[insert screenshot of architecture]
 
 ## Monitoring
 
@@ -474,7 +584,7 @@ There are many different models of cloud computing [ranging from infrastructure-
 - Granular scalability which creates potential cost savings as there are fewer wasted resources compared to a server-based model where you have to pay for the server even if it is not being used
 - High availability which can reduce response times and aid in meeting real-time latency requirements
 
-Although, serverless is not without its tradeoffs including [cold start issues and challenges around testing and debugging](https://www.cloudflare.com/learning/serverless/why-use-serverless/)
+Although, serverless is not without its tradeoffs including [cold start issues and challenges around testing and debugging](https://www.cloudflare.com/learning/serverless/why-use-serverless/).
 
 ### Traditional Cloud vs Edge
 
@@ -484,13 +594,13 @@ For Syncosarus, we ultimately elected to deploy on the edge and accept tradeoffs
 
 ### Cloudflare Workers and Durable Objects
 
-When choosing a provider to build on, we narrowed in on a couple of options
+When choosing a provider to build on, we narrowed in on a couple of options.
 
 First, we could have built our serverless edge infrastructure using a combination of AWS Lambda@Edge, Amazon API Gateway, and a persistent storage mechanism like AWS Dynamo DB:
 
 [insert graphic]
 
-While this is a perfectly valid approach, it does involve provisioning and connecting several components which can increase the complexity of deployment and maintenance.
+While this is a totally valid approach, it does involve provisioning and connecting several components which can increase the complexity of deployment and maintenance.
 
 As previously mentioned, we instead ended up choosing a Cloudflare-based architecture consisting of Workers and Durable Objects due to its simplicity and extremely strong fit for our use case.
 
@@ -502,7 +612,7 @@ DOs provide a single point of coordination for WebSockets and have built-in docu
 
 However, it should also be noted that DOs have limitations, most notably that the persistent storage only supports key-value pairs and that a DO has a soft limit of 1,000 requests per second. This means that depending on the volume of requests a single client sends and the number of concurrent WebSocket connections, a DO could run into scaling issues.
 
-As we’ve defined, real-time collaborative applications should emulate at most a board meeting (~15 WebSocket connections), not a town hall (~100 WebSocket connections), therefore scaling concerns around the number of concurrent WebSocket connections and the number of requests per second were minor with optimizations put in place as we’ll discuss shortly
+As we’ve defined, real-time collaborative applications should emulate at most a board meeting (~15 WebSocket connections), not a town hall (~100 WebSocket connections), therefore scaling concerns around the number of concurrent WebSocket connections and the number of requests per second were minor with optimizations put in place as we’ll discuss shortly.
 
 ## Engineering Challenges
 
@@ -542,7 +652,7 @@ Another area of consideration was the trigger mechanism of authoritative updates
 
 Using an event-driven model means that for every message sent by a single client to the DO, M update messages are broadcasted by the DO, where M represents the number of connected clients. While this approach requires simple logic, in production, it can quickly present a scaling concern.
 
-If we assume all clients are sending messages simultaneously and we are targeting a certain message per second rate (i.e. [frame rate per second (FPS)](https://www.100ms.live/blog/frame-rate#)) broadcasting would scale at a rate of O(M^2\*N) where N represents the number of messages sent per second by a single client
+If we assume all clients are sending messages simultaneously and we are targeting a certain message per second rate (i.e. [frame rate per second (FPS)](https://www.100ms.live/blog/frame-rate#)) broadcasting would scale at a rate of O(M^2\*N) where N represents the number of messages sent per second by a single client.
 
 [insert graphic]
 
@@ -550,7 +660,7 @@ In [testing](https://news.ycombinator.com/item?id=37942258) done by Reflect, the
 
 #### Time-driven model
 
-A time-driven model means that the DO would group state changes into a single update and send out a periodic message based on a configurable time frequency
+A time-driven model means that the DO would group state changes into a single update and send out a periodic message based on a configurable time frequency.
 
 [insert graphic]
 
@@ -568,7 +678,7 @@ To make subscriptions fit React’s granular rendering model, we decided to allo
 
 [insert diagram of process]
 
-Though, there may be additional memory overhead with memoizing query results and maintaining a key watchlist, eliminating unnecessary UI re-renders and making subscriptions more robust leads to a snappier UI and gives developers more control over the rendering of their application, respectively
+Though, there may be additional memory overhead with memoizing query results and maintaining a key watchlist, eliminating unnecessary UI re-renders and making subscriptions more robust leads to a snappier UI and gives developers more control over the rendering of their application, respectively.
 
 ### Challenge: Ease of use
 
@@ -577,7 +687,7 @@ The last area of consideration was how to make Syncosaurus easier to use by othe
 - Optional authentication support for room access using JWTs
 - An Analytics Dashboard to monitor and debug rooms
 
-#### Authentication
+### Authentication
 
 The Syncosaurus framework supports token-based authentication that allows a developer to enforce proper room access if they choose. JWTs are commonly utilized for this, but other types of token-based authentication like OAuth can be used as well. To implement authentication, a developer must provide two components to work with our authentication handler:
 
@@ -586,7 +696,7 @@ The Syncosaurus framework supports token-based authentication that allows a deve
 
 #### Analytics Dashboard
 
-As demonstrated, Syncosaurus includes an analytics tool to easily view and analyze aggregate and single-room metrics for an application. The dashboard allows a developer to gain insights into usage and debug their application if necessary. The architecture for the analytics dashboard displays data from Cloudflare’s endpoints and visualizes it in a locally running front-end application that pulls from a custom-built GraphQL backend :
+As demonstrated, Syncosaurus includes an analytics tool to easily view and analyze aggregate and single-room metrics for an application. The dashboard allows a developer to gain insights into usage and debug their application if necessary. The architecture for the analytics dashboard displays data from Cloudflare’s endpoints and visualizes it in a locally running front-end application that pulls from a custom-built GraphQL backend:
 
 [insert graphic]
 

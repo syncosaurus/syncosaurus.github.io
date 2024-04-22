@@ -1,8 +1,10 @@
-import Dia2ClientChangesSync from './diagrams/Dia2ClientChangesSync.jsx'
 import LatencySlider from '@site/src/components/LatencySlider/LatencySlider'
 import TodoList from '@site/src/components/TodoList/TodoList'
 import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
+import { Websockets } from '@site/src/components/Diagrams/index.js'
+
+<Websockets />
 
 ## Overview
 
@@ -26,7 +28,7 @@ Although there are numerous architectures for web applications, they can broadly
 
 - **Centralized** such as the client-server architecture where client machines send resource requests to a backend server. In the client-server architecture, the server is generally authoritative, meaning it is the source of truth.
 
-<Dia2ClientChangesSync />
+[insert P2P]
 
 - **Decentralized** such as the peer-to-peer architecture where every machine (known as a node) is treated equally and responsible for sending and responding to requests for resources. In the peer-to-peer architecture, every machine has equal authority and a consensus must usually be reached to determine the truth.
 

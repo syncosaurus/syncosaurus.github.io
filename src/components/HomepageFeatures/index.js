@@ -16,7 +16,7 @@ export default function HomepageFeatures() {
       <FadeInSection>
         <div className="w-9/12 h-30 py-10 my-20 mx-auto md:px-6">
           <section className="mb-27">
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap items-center">
               <div className="mb-12 w-full shrink-0 grow-0 basis-auto lg:mb-0 lg:w-5/12 ">
                 <object
                   type="image/svg+xml"
@@ -24,7 +24,7 @@ export default function HomepageFeatures() {
                 ></object>
               </div>
               <div className="w-full shrink-0 grow-0 basis-auto lg:w-7/12 align-middle">
-                <div className="flex h-full items-center rounded-lg bg-primary p-6  text-black lg:pl-12 lg:text-left">
+                <div className="flex h-full justify-center rounded-lg bg-primary p-6  text-black lg:pl-12 lg:text-left">
                   <div className="lg:pl-12">
                     <h2 className="mb-6 text-3xl font-bold  text-syncoBlue">
                       Robust and Flexible Collaboration Engine
@@ -50,7 +50,7 @@ export default function HomepageFeatures() {
       <FadeInSection>
         <div className="grid w-9/12 h-30 py-10 my-20 mx-auto md:px-6">
           <section className="mb-27">
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap items-center">
               <div className="mb-12 w-full shrink-0 grow-0 basis-auto lg:mb-0 lg:w-4/12">
                 <h2 className="mb-6 text-3xl font-bold text-syncoBlue">
                   Easy Development and Deployment
@@ -78,7 +78,7 @@ export default function HomepageFeatures() {
       <FadeInSection>
         <div className="grid w-9/12 h-30 py-10 my-20 mx-auto md:px-6">
           <section className="mb-27">
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap items-center">
               <div className="mb-12 w-full shrink-0 grow-0 basis-auto lg:mb-0 lg:w-8/12">
                 <div className="flex lg:py-12 w-auto">
                   <img

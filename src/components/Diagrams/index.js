@@ -119,35 +119,43 @@ export const StateUpdates = () => {
 }
 
 export const SyncingModel1 = () => {
-  return <object
-  type="image/svg+xml"
-  data="/img/diagrams/diag-syncingModel-1.svg"
-  className="w-96"
-></object>
+  return <div className="flex justify-center">
+    <object
+    type="image/svg+xml"
+    data="/img/diagrams/diag-syncingModel-1.svg"
+    className="h-64"
+    ></object>
+  </div>
 }
 
 export const SyncingModel2 = () => {
-  return <object
-  type="image/svg+xml"
-  data="/img/diagrams/diag-syncingModel-2.svg"
-  className="w-96"
-></object>
+  return <div className="flex justify-center mt-24">
+    <object
+    type="image/svg+xml"
+    data="/img/diagrams/diag-syncingModel-2.svg"
+    className="h-64"
+    ></object>
+  </div>
 }
 
 export const SyncingModel3 = () => {
-  return <object
-  type="image/svg+xml"
-  data="/img/diagrams/diag-syncingModel-3.svg"
-  className="w-96"
-></object>
+  return <div className="flex justify-center mt-24">
+    <object
+    type="image/svg+xml"
+    data="/img/diagrams/diag-syncingModel-3.svg"
+    className="h-64"
+    ></object>
+  </div>
 }
 
 export const SyncingModel4 = () => {
-  return <object
-  type="image/svg+xml"
-  data="/img/diagrams/diag-syncingModel-4.svg"
-  className="w-96"
-></object>
+  return <div className="flex justify-center mt-24">
+    <object
+    type="image/svg+xml"
+    data="/img/diagrams/diag-syncingModel-4.svg"
+    className="h-64"
+    ></object>
+  </div>
 }
 
 export const TimeDrivenMessages = () => {

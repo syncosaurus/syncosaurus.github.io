@@ -9,7 +9,7 @@ export default function HomepageFeatures() {
     <>
       <FadeInSection>
         <div className="text-center mt-5 pt-10 pb-2">
-          <h1 className="text-5xl text-green-500">Key Features</h1>
+          <h1 className="text-5xl text-syncoGreen">Key Features</h1>
         </div>
       </FadeInSection>
 
@@ -64,7 +64,7 @@ export default function HomepageFeatures() {
                 <div className="flex h-full rounded-lg bg-primary p-6 text-center text-black lg:pl-12 lg:text-left">
                   <div className="lg:pl-12">
                     <img
-                      src="/img/syncosaurus-deploy.png"
+                      src="img/screenshots/syncosaurus-deploy.png"
                       className="w-full rounded-lg shadow-lg dark:shadow-black/20 lg:ml-[10px] z-[10]"
                       alt="image"
                     />
@@ -82,7 +82,7 @@ export default function HomepageFeatures() {
               <div className="mb-12 w-full shrink-0 grow-0 basis-auto lg:mb-0 lg:w-8/12">
                 <div className="flex lg:py-12 w-auto">
                   <img
-                    src="img/dashboard_screenshot.png"
+                    src="img/screenshots/dashboard_screenshot.png"
                     className="w-full rounded-lg shadow-lg dark:shadow-black/30 lg:ml-[25px] z-[10]"
                     alt="image"
                   />

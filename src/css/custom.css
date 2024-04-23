@@ -8,6 +8,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .filter-syncoGreen {
+    @apply invert-[.68] sepia-[.92] saturate-[3.21] hue-rotate-[48deg] brightness-[.93] contrast-[.9];
+  }
+}
+
+@layer components {
+  .filter-syncoBlue {
+    @apply invert-[.2] sepia-[.11] saturate-[60.63] hue-rotate-[197deg] brightness-[.89] contrast-[.98];
+  }
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #243d83;
@@ -38,15 +50,53 @@
   align-self: center;
 }
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  width: 99.5%;
+  opacity: 92%;
+  outline: none;
+  height: 202px;
+  background-color: #f9f9f9;
+  opacity: 92%;
+  margin-top: 0.3rem;
+  margin-bottom: 0.25rem;
+  border-top-right-radius: 1.5rem; /* 24px */
+  border-top-left-radius: 1.5rem; /* 24px */
+  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+}
+
+.footer__items a {
+  color: #1d3370;
+}
+
+.footer__items a:hover {
+  color: #7ed348;
+  text-decoration: none;
+}
+
+.footer__title {
+  color: #1d3370;
+  font-size: 1.08rem;
+}
+
+.footer__copyright {
+  color: #1d3370;
+  font-size: 0.9rem;
+}
+
 .navbar {
   display: flex;
   align-items: center;
   width: 99.5%;
   height: 50px;
   align-self: center;
-  background-color: #faf9f6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #f9f9f9;
   margin-bottom: 0.25rem;
   opacity: 92%;
   outline: none;
@@ -63,8 +113,8 @@
 
 .navbar__items a {
   color: #1d3370;
-  font-weight: 500;
-  font-size: 1.15rem;
+  font-weight: 450;
+  font-size: 1.1rem;
 }
 
 .navbar__items a:hover {
@@ -73,7 +123,7 @@
 }
 
 .navbar__title {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 900;
   color: #1d3370;
 }
@@ -88,11 +138,6 @@
   height: 48px; /* Set the desired height */
   margin-top: -15%;
   align-self: center;
-}
-
-main {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .col--2 {

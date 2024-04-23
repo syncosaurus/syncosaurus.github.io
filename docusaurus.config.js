@@ -118,8 +118,7 @@ const config = {
               },
             ],
           },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Syncosaurus`,
+        ]
       },
       prism: {
         theme: prismThemes.github,

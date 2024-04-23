@@ -3,15 +3,22 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import HomepageFeatures from '@site/src/components/HomepageFeatures'
 import Puzzle from '@site/src/components/Puzzle'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
-function HomepageHeader() {
+export default function Home() {
+  const featureRef = useRef(null)
   const [scrollDownArrowOpacity, setScrollDownArrowOpacity] = useState(0.9)
 
   const setScroll = () => {
     const displayValue =
       window.scrollY / document.body.scrollHeight < 0.05 ? 1 : 0;
     setScrollDownArrowOpacity(displayValue)
+  }
+
+  const handleScrollClick = () => {
+    if (featureRef.current) {
+      featureRef.current.scrollIntoView({ behavior: 'smooth'});
+    }
   }
 
   useEffect(() => {
@@ -24,10 +31,10 @@ function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext()
 
   return (
-    // rounded-2xl bg-indigo-50 py-10 overflow-hidden m-5 lg:m-0 2xl:py-16 xl:py-8  lg:rounded-tl-2xl lg:rounded-bl-2xl
-    <div
+    <Layout description="Syncosaurus Homepage">
+      <div
       id="hero-landing"
-      className="font-sans min-h-8/10 rounded-3xl lg:rounded-tl-2xl lg:rounded-bl-2xl overflow-hidden m-1 pt-10 pb-5 flex flex-col text-center items-center bg-gradient-to-br from-slate-900 via-slate-800 to-syncoBlue"
+      className="font-sans h-11/12 rounded-3xl lg:rounded-tl-2xl lg:rounded-bl-2xl overflow-hidden m-1 pt-10 pb-5 flex flex-col text-center items-center bg-gradient-to-br from-slate-900 via-slate-800 to-syncoBlue"
     >
       <Puzzle />
       <h1 className="font-jakarta text-6xl font-bold text-white m-8">{siteConfig.title}</h1>
@@ -49,19 +56,13 @@ function HomepageHeader() {
       <div className="pt-8 pb-0">
         <img
           style={{ opacity: scrollDownArrowOpacity  }}
-          className="animate-bounce"
+          className="opacity-10 animate-pulse"
           src="/img/icons/scroll-down-arrow.png"
+          onClick={handleScrollClick}
         ></img>
       </div>
     </div>
-  )
-}
-
-export default function Home() {
-  return (
-    <Layout description="Syncosaurus Homepage">
-      <HomepageHeader />
-      <main>
+      <main ref={featureRef}>
         <HomepageFeatures />
       </main>
     </Layout>

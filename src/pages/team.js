@@ -15,11 +15,14 @@ export default function Team() {
             <img
               src="/img/team/alex.jpeg"
               alt="Alex Sklar"
-              class="mb-4 mt-4 block w-11/12 max-w-[200px] rounded-full"
+              class="mix-blend-screen mb-4 mt-4 block w-11/12 max-w-[200px] rounded-full"
             />
             <h3 class="text-syncoBlue mb-3 mt-3 text-center text-2xl sm:text-lg md:text-2xl">
               Alex Sklar
             </h3>
+            <p class="text-gray-500 text-center text-lg sm:text-md md:text-lg">
+              Portland, OR
+            </p>
             <div class="flex gap-3">
               <a
                 href="https://www.google.com"
@@ -54,11 +57,14 @@ export default function Team() {
             <img
               src="/img/team/erik.jpeg"
               alt="Erik Margetis"
-              class="mb-4 mt-4 block w-11/12 max-w-[200px] rounded-full"
+              class="mix-blend-screen mb-4 mt-4 block w-11/12 max-w-[200px] rounded-full"
             />
             <h3 class="text-syncoBlue mb-3 mt-3 text-center text-2xl sm:text-lg md:text-2xl">
               Erik Margetis
             </h3>
+            <p class="text-gray-500 text-center text-lg sm:text-md md:text-lg">
+              San Francisco, CA
+            </p>
             <div class="flex gap-3">
               <a
                 href="https://www.google.com"
@@ -93,11 +99,14 @@ export default function Team() {
             <img
               src="/img/team/joseph.jpeg"
               alt="Joseph Liang"
-              class="mb-4 mt-4 block w-11/12 max-w-[200px] rounded-full"
+              class="mix-blend-screen mb-4 mt-4 block w-11/12 max-w-[200px] rounded-full"
             />
             <h3 class="text-syncoBlue mb-3 mt-3 text-center text-2xl sm:text-lg md:text-2xl">
               Joseph Liang
             </h3>
+            <p class="text-gray-500 text-center text-lg sm:text-md md:text-lg">
+              Oakland, CA
+            </p>
             <div class="flex gap-3">
               <a
                 href="https://www.google.com"
@@ -128,8 +137,6 @@ export default function Team() {
               </a>
             </div>
           </div>
-
-
         </div>
       </div>
     </Layout>

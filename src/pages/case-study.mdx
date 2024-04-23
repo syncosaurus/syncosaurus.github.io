@@ -2,9 +2,33 @@ import LatencySlider from '@site/src/components/LatencySlider/LatencySlider'
 import TodoList from '@site/src/components/TodoList/TodoList'
 import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
-import { Websockets } from '@site/src/components/Diagrams/index.js'
-
-<Websockets />
+import AllDiagrams from '@site/src/components/Diagrams/allDiagrams.js'
+import {
+  Websockets,
+  AbsoluteUpdates,
+  Centralized,
+  ConflictEdits,
+  CRDT,
+  DeltaUpdate,
+  LongPolling,
+  NewClientConnection,
+  ONMessaging,
+  ON2Messaging,
+  OptimisticUI,
+  OT,
+  P2P,
+  RelativeUpdate,
+  StateUpdates,
+  SyncingModel1,
+  SyncingModel2,
+  SyncingModel3,
+  SyncingModel4,
+  TimeDrivenMessages,
+  WhiteboardConflict,
+  WhiteboardDemo,
+  WhiteboardDemoLatency,
+  NoConflictEdits,
+} from '@site/src/components/Diagrams/index.js'
 
 # Overview
 
@@ -27,7 +51,7 @@ Broadly, real-time collaboration is a term used to describe software or technolo
 
 With the rise of [remote work and distributed teams](https://medium.com/@anupamr/distributed-teams-are-the-new-cloud-for-startups-14240a9822d7), apps like these [are becoming critical in the modern work environment](https://northzone.com/2023/06/20/perspectives-the-rise-of-multiplayer-software/). Well-known examples include Google Docs, Figma, and Notion among others:
 
-[graphic here]
+[TODO graphic here]
 
 While [a broader definition](https://www.microsoft.com/en-us/microsoft-365/business-insights-ideas/resources/real-time-collaboration-what-it-is-and-how-it-helps-your-business) of real-time collaboration applications can include video conferencing and messaging software, those types of applications have different technical requirements and will be excluded from the scope of this case study.
 
@@ -38,9 +62,11 @@ At a fundamental level when multiple users are “collaborating” on the same a
 - Centralized
 - Decentralized
 
-Centralized includes the client-server architecture where client machines send resource requests to a backend server. In the client-server architecture, the server is generally [authoritative](https://medium.com/mighty-bear-games/what-are-server-authoritative-realtime-games-e2463db534d1), meaning it is the source of truth.
+<Centralized />
 
-[insert P2P]
+- **Centralized** includes the client-server architecture where client machines send resource requests to a backend server. In the client-server architecture, the server is generally [authoritative](https://medium.com/mighty-bear-games/what-are-server-authoritative-realtime-games-e2463db534d1), meaning it is the source of truth.
+
+<P2P />
 
 - **Decentralized** such as the peer-to-peer architecture where every machine (known as a node) is treated equally and responsible for sending and responding to requests for resources. In the peer-to-peer architecture, every machine has equal authority and a consensus must usually be reached to determine the truth.
 
@@ -82,7 +108,7 @@ Note that using [streams over HTTP/2](https://getstream.io/blog/communication-pr
 
 Long polling is a technique to emulate server push communications via normal HTTP requests. Long polling works like this:
 
-[graphic here]
+<LongPolling />
 
 Although every browser supports long polling, it has high latency compared to other options such as WebSockets, and a risk of missing messages without extensive code on the client and server. Therefore, long polling [is generally better suited as a fallback option as opposed to a primary means of bi-directional communication](https://ably.com/topic/long-polling#:~:text=HTTP%20long%20polling%20solves%20the,make%20requests%20and%20servers%20respond.).
 
@@ -90,7 +116,7 @@ Although every browser supports long polling, it has high latency compared to ot
 
 [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket?retiredLocale=de) is an application layer protocol that provides a [full-duplex](https://www.comms-express.com/infozone/article/half-full-duplex/) communication channel over a single, long-lived connection between the client and server. This means that similar to a phone call, the connection from the client to the server will stay open as long the network is not interrupted and neither the client nor the server actively terminates it. This open connection enables clients and servers to freely exchange data without the overhead of the HTTP request-response cycle, but because it is built on top of [TCP](https://www.ibm.com/docs/ro/aix/7.1?topic=protocols-transmission-control-protocol), it still has guaranteed in-order message delivery. WebSockets work like this:
 
-[graphic here]
+<Websockets />
 
 Once the handshake is complete, the WebSocket connection is established and both parties are now free to transmit data at any time.
 
@@ -118,7 +144,7 @@ To better illustrate the concepts of the current and subsequent sections in our 
 
 In our example whiteboard application, all users expect to simultaneously see the same shapes (i.e. a consistent application state) so that they can react and respond accordingly:
 
-[graphic here]
+<WhiteboardDemo />
 
 If we assume the app is using a client-server architecture where the clients do not hold any state of their own (i.e. [thin clients](https://www.fortinet.com/resources/cyberglossary/thin-client)), the change-initiating client would need to wait until the change is received and confirmed by the server and then propagated to all clients before seeing the change reflected in its state.
 
@@ -128,7 +154,7 @@ One may assume that because our application is using WebSockets, the information
 
 Using our whiteboard example, you can see that the users have a different experience when latency is introduced:
 
-[graphic here]
+<WhiteboardDemoLatency />
 
 To increase consistency in our application, we will now explore [tools and techniques](https://developer.mozilla.org/en-US/docs/Web/Performance) to help us reduce latency.
 
@@ -148,11 +174,11 @@ Finally, [optimistically updating the client’s UI](https://javascript.plaineng
 
 Optimistic UI works like this:
 
-[graphic here]
+<OptimisticUI />
 
 An important implication of implementing optimistic UI is that each client has a local replica of the state that must be kept in sync with the server. Thus using it in our whiteboard app means that it now has distributed state. [Figma uses this same technique](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/) - when a client opens a Figma design file, a copy of the document is sent from the server to the client and it must be kept in sync:
 
-[graphic here]
+<NewClientConnection />
 
 However, as we’ll see in the next section, maintaining multiple copies of client state and a server state in the context of shared editing means conflicts can and will arise.
 
@@ -160,7 +186,7 @@ However, as we’ll see in the next section, maintaining multiple copies of clie
 
 Since the advent of Google Docs, the ability for multiple clients to simultaneously edit a document has [become commonplace](https://diginomica.com/brief-history-collaborative-documents). However, simultaneous editing [invariably leads to shared state conflicts](https://rocicorp.dev/blog/ready-player-two) because multiple clients can make changes to the same part of the state at the same time. Using our whiteboard app as a demonstration let’s say client A decides that they want to change the color of an existing blue shape to green, while client B decides they want to change the color of the same shape to red at the same time:
 
-[graphic here]
+<WhiteboardConflict />
 
 If these changes occur simultaneously, a conflict clearly occurs and to maintain a consistent, synchronized view across clients (i.e. state convergence), there must be some kind of conflict-resolution strategy in place
 
@@ -180,21 +206,21 @@ However, before comparing strategies, it is worth reiterating that the initial d
 
 This means that if a change is intended to be applied relative to the current state (e.g. adding 1 to a count shared across multiple clients), multiple changes that could be considered conflicting would be stacked on top of each other instead. For example:
 
-[graphic here]
+<RelativeUpdate />
 
 However, if a change is meant to be [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm), meaning the same outcome is produced based on the same input (e.g. changing the color of shape), multiple changes to that property would result in the last one to arrive as the outcome:
 
-[graphic here]
+<AbsoluteUpdates />
 
 The process of transactional conflict resolution is somewhat simple to reason about.
 
 If two clients make a concurrent change to the same object but modify a different property, no conflicts occur. Because clients only send the intent of a change, these can both be processed in the order of arrival by the server
 
-[graphic here]
+<NoConflictEdits />
 
 When concurrent changes occur to the same property, a conflict occurs. By default, the server resolves this conflict using a simple [Last Write Wins](https://dzone.com/articles/conflict-resolution-using-last-write-wins-vs-crdts) (LWW) approach. The server then broadcasts the resolved state to all clients.
 
-[graphic here]
+<ConflictEdits />
 
 However, depending on the application, it is possible to build in any custom conflict resolution that would override the default Last Write Wins Behavior
 
@@ -209,7 +235,7 @@ A CRDT is a technique to solve conflicts using [a complex data structure that re
 
 We will use a simple operation-based CRDT example to demonstrate how they work in a broad sense:
 
-[graphic here]
+<CRDT />
 
 Generally, although CRDTs [can be used in server authority models](https://exaspark.medium.com/top-5-ways-to-implement-real-time-rich-text-editor-ranked-by-complexity-3bc26e3c777f), they are best suited [for decentralized systems](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/) because they do not require an authoritative server. CRDTs are also a strong fit for [applications with offline support](https://exaspark.medium.com/top-5-ways-to-implement-real-time-rich-text-editor-ranked-by-complexity-3bc26e3c777f) because the data structure can preserve edits by an offline client and automatically merge them when the client regains connectivity.
 
@@ -219,7 +245,7 @@ However, CRDTs require a lot of [computational and bandwidth overhead](https://w
 
 OT is a technique to solve conflicts using [a set of algorithms that compare concurrent operations](<https://dev.to/sudoboink/the-basics-of-operational-transformation-288j#:~:text=Operational%20transformation%20(OT)%20is%20a,the%20operations%20of%20another%20user.>) and detect if the operations will allow the state to converge. If not, the operations are modified (or transformed) to resolve conflicts before being applied to the state:
 
-[graphic here]
+<OT />
 
 Much like CRDTs, OT is known to be complex to reason about and can [theoretically be implemented in a distributed fashion](https://digitalfreepen.com/2018/01/04/operational-transform-hard.html), however, it is overly complex so most OT implementations rely on a central server, which is still complex to implement itself.
 
@@ -281,62 +307,64 @@ Syncosaurus is a React Javascript client-side SDK with full ready-to-be-deployed
 Similar to commercial solutions like Liveblocks and Reflect, Syncosaurus exposes a client-side SDK while abstracting the backend logic and handling much of the deployment - the only thing a developer has to do to get the backend deployed is sign up for a Cloudflare account and use our CLI to deploy. However, unlike the commercial solutions, the Syncosaurus framework is free to use and open source so a developer can alter the default backend code if they choose.
 
 <table>
-  <tr>
-    <td></td>
-    <td>DIY</td>
-    <td>Liveblocks</td>
-    <td>Reflect</td>
-    <td>Syncosaurus</td>
-  </tr>
-  <tr>
-    <td>Open-source</td>
-    <td>✅</td>
-    <td>❌</td>
-    <td>❌</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Managed Service</td>
-    <td>❌</td>
-    <td>✅</td>
-    <td>✅</td>
-    <td>❌</td>
-  </tr>
-  <tr>
-    <td>Easy to Deploy</td>
-    <td>❌</td>
-    <td>✅</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Conflict Resolution Mechanism</td>
-    <td>Any</td>
-    <td>CRDTs</td>
-    <td>Transactional Conflict Resolution</td>
-    <td>Transactional Conflict Resolution</td>
-  </tr>
-  <tr>
-    <td>Authentication Support</td>
-    <td>✅</td>
-    <td>✅</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>Offline Client Support</td>
-    <td>✅</td>
-    <td>✅</td>
-    <td>✅</td>
-    <td>❌</td>
-  </tr>
-  <tr>
-    <td>Analytics</td>
-    <td>✅</td>
-    <td>✅</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>DIY</td>
+      <td>Liveblocks</td>
+      <td>Reflect</td>
+      <td>Syncosaurus</td>
+    </tr>
+    <tr>
+      <td>Open-source</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Managed Service</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Easy to Deploy</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Conflict Resolution Mechanism</td>
+      <td>Any</td>
+      <td>CRDTs</td>
+      <td>Transactional Conflict Resolution</td>
+      <td>Transactional Conflict Resolution</td>
+    </tr>
+    <tr>
+      <td>Authentication Support</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Offline Client Support</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>Analytics</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+  </tbody>
 </table>
 
 # Using Syncosaurus
@@ -350,15 +378,15 @@ As mentioned, Syncosaurus uses a real-time syncing model with transactional conf
 - When a client makes a change to state, it is immediately applied to the client’s locally and the client places a copy of the intent of the change (i.e. a state mutation) in a pending queue.
 - Next, the mutation is sent across the WebSocket connection to the Syncosaurus server.
 
-[graphic here]
+<SyncingModel1 />
 
 - Once the change is made to the authoritative state, the server sends a confirmation update to the client, which the client then uses to update its state to match the server and remove the pending state mutation from the queue.
 
-[graphic here]
+<SyncingModel3 />
 
 - When more than one client is connected to a given room, any mutations from one client are broadcast to all other clients by the server. Because an update from the server is authoritative, all client states are guaranteed to converge.
 
-[graphic here]
+<SyncingModel4 />
 
 ## Development
 
@@ -370,7 +398,7 @@ The first step to use Syncosaurus is to install the CLI tool by running `npm ins
 
 Next one can choose to add Syncosaurus to an existing React project using `npx syncosaurus setup` or create a project from scratch using `npx syncosaurus init`
 
-[insert nice CLI graphic / gif]
+[TODO insert nice CLI graphic / gif]
 
 ### Create and launch
 
@@ -544,7 +572,7 @@ Go ahead and enter some todos into Client 1 and watch them appear on Client 2 af
 
 After you’re satisfied with the local version of the application, it can be deployed to Cloudflare by running `npx syncosaurus deploy`. Your deployed Cloudflare architecture will consist of Cloudflare Workers and Durable Objects. For each room your clients create, a new Durable Object will be created and any client will be able to connect to it through a worker:
 
-[insert screenshot of architecture]
+[TODO insert screenshot of architecture]
 
 ## Monitoring
 
@@ -552,7 +580,7 @@ After your application is deployed, you can monitor its usage and get help debug
 
 The dashboard includes hourly time-series metrics related to errors and usage for each room so you can verify users are able to access and use the application in a bug-free manner
 
-[insert screenshot of dashboard]
+[TODO insert screenshot of dashboard]
 
 For even more detail, a tail logging session for your deployed backend can be started by running `npx syncosaurus tail`
 
@@ -568,7 +596,7 @@ Before we can discuss the architecture of Syncosaurus, it’s important to summa
 - Multiple concurrent rooms (maintaining WebSocket connections and broadcasting messages)
 - Persistent storage of documents
 
-[insert graphic of multiple rooms with clients connected and a new client trying to connect to a particular room]
+[TODO insert graphic of multiple rooms with clients connected and a new client trying to connect to a particular room]
 
 ## Architecture
 
@@ -594,13 +622,13 @@ When choosing a provider to build on, we narrowed in on a couple of options.
 
 First, we could have built our serverless edge infrastructure using a combination of AWS Lambda@Edge, Amazon API Gateway, and a persistent storage mechanism like AWS Dynamo DB:
 
-[insert graphic]
+[TODO insert graphic]
 
 While this is a valid approach, it does involve provisioning and connecting several components which can increase the complexity of deployment and maintenance.
 
 As previously mentioned, we instead ended up choosing a Cloudflare-based architecture consisting of Workers and Durable Objects due to its simplicity and extremely strong fit for our use case.
 
-[insert graphic]
+[TODO insert graphic]
 
 A Worker is an edge-based serverless function on the Cloudflare network. A Durable Object (DO) is a special type of Worker - a globally unique [JavaScript isolate ](https://v8docs.nodesource.com/node-0.8/d5/dda/classv8_1_1_isolate.html)(a unique JS engine) with access to its own private strongly consistent [storage](https://developers.cloudflare.com/durable-objects/api/transactional-storage-api/) and built-in [caching](https://developers.cloudflare.com/durable-objects/reference/in-memory-state/#:~:text=The%20Durable%20Object's%20storage%20has,be%20instantly%20returned%20from%20cache.).
 
@@ -616,14 +644,18 @@ When engineering Syncosuaurus, we had to be thoughtful about the efficiency of t
 
 ### Challenge: Authoritative Update Size
 
-A naive implementation of authoritative updates sent from the server to clients would be to broadcast the entire state from the server to all clients when each change occurs. However, an issue with this approach is that as the document grows in size, the message size containing the authoritative state sent from the server to the client will grow equivalently. This has two consequences:
+A naive implementation of authoritative updates sent from the server to clients would be to broadcast the entire state from the server to all clients when each change occurs.
+
+<AbsoluteUpdates />
+
+However, an issue with this approach is that as the document grows in size, the message size containing the authoritative state sent from the server to the client will grow equivalently. This has two consequences:
 
 - Larger update sizes mean that the WebSocket messages will take longer to transmit
 - Once a message arrives at the client, it will take longer to process and update its entire local state
 
 An alternative approach to prevent this is to send an update that only contains the changes that the server, also known as a [delta update](https://en.wikipedia.org/wiki/Delta_update) approach:
 
-[insert example delta update message example here]
+<DeltaUpdate />
 
 We ultimately decided on the delta update approach for the efficiency gains, however, this decision introduced the risk that a missed update by a client could lead to a divergent state.
 
@@ -633,7 +665,7 @@ As mentioned, a risk of using delta updates is the heightened potential for miss
 
 To do so, we implemented an incrementing `batchID` which is sent by the DO as a property on every update message broadcasted to the clients. Each client tracks the `batchID` of the last message it received from the DO and when it receives a new message, it compares the previous `batchID` against the new one to determine if it missed an update. If a client misses an update, it sends a special request to the DO for a copy of the entire latest state.
 
-[insert diagram of process]
+[TODO insert diagram of process]
 
 Note that sending only the delta updates missed could reduce the state recovery message size and latency, however, the DO currently does not keep a log of the updates it broadcasts. This is an area for future investigation since it would likely create greater memory and storage demands on the DO.
 
@@ -650,7 +682,7 @@ Using an event-driven model means that for every message sent by a single client
 
 If we assume all clients are sending messages simultaneously and we are targeting a certain message per second rate (i.e. [frame rate per second (FPS)](https://www.100ms.live/blog/frame-rate#)) broadcasting would scale at a rate of O(M^2\*N) where N represents the number of messages sent per second by a single client.
 
-[insert graphic]
+<ON2Messaging />
 
 In [testing](https://news.ycombinator.com/item?id=37942258) done by Reflect, the target budget of a DO should be approximately 2,000 calls per second to `WebSocket.send `(a call to transmit a message over a WebSocket connection). This means, that if an app wants to target 60 FPS (a standard [in gaming](https://www.100ms.live/blog/frame-rate#)) it can only have 6 concurrent users (60 messages/second = 2000 calls / (6 users^2)). While a 6-user limit is suitable for some applications, it does shrink the pool of applications Syncosaurus could support.
 
@@ -658,13 +690,13 @@ In [testing](https://news.ycombinator.com/item?id=37942258) done by Reflect, the
 
 A time-driven model means that the DO would group state changes into a single update and send out a periodic message based on a configurable time frequency.
 
-[insert graphic]
+<TimeDrivenMessages />
 
 This frequency directly correlates with the frame rate and makes the messaging system scale at a rate of O(M\*N). Therefore, if an app wanted to target 60 FPS (approximately every 16ms), it can support up to 33 concurrent connections.
 
 The tradeoff with this approach is that a message will be sent whether an update has occurred or not, meaning there may be unnecessary empty messages sent. However, we decided this tradeoff was worth it to make our messaging more efficient (message scales at a rate of O(M*N) instead of O(M^2 * N)) and to expand the pool of Syncosaurus-compatible applications.
 
-[insert graphic]
+<ONMessaging />
 
 ### Challenge: Re-rendering and Subscriptions
 
@@ -672,7 +704,7 @@ An additional consideration was reducing unnecessary client-side rendering in Re
 
 To make subscriptions fit React’s granular rendering model, we decided to allow developers to write query functions on per component basis that indicate which keys in the local store they want to watch for updates (known as a key “watchlist”). Furthermore, by allowing subscriptions to accept a query callback, the developer can transform data in this callback before returning the value to React to be rendered. Finally, an additional mechanism we put in place to reduce unnecessary re-renders was a check to ensure the result of the query had changed since its last rerender (i.e. memoization), otherwise a new render would not be initiated.
 
-[insert diagram of process]
+[TODO insert diagram of process]
 
 Though, there may be additional memory overhead with memoizing query results and maintaining a key watchlist, eliminating unnecessary UI re-renders and making subscriptions more robust leads to a snappier UI and gives developers more control over the rendering of their application, respectively.
 
@@ -694,7 +726,7 @@ The Syncosaurus framework supports token-based authentication that allows a deve
 
 As demonstrated, Syncosaurus includes an analytics tool to easily view and analyze aggregate and single-room metrics for an application. The dashboard allows a developer to gain insights into usage and debug their application if necessary. The architecture for the analytics dashboard displays data from Cloudflare’s endpoints and visualizes it in a locally running front-end application that pulls from a custom-built GraphQL backend:
 
-[insert graphic]
+[TODO insert graphic]
 
 # Future of Syncosaurus
 

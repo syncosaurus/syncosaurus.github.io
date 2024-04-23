@@ -583,7 +583,7 @@ After your application is deployed, you can monitor its usage and get help debug
 
 The dashboard includes hourly time-series metrics related to errors and usage for each room so you can verify users are able to access and use the application in a bug-free manner
 
-[TODO insert screenshot of dashboard]
+<img src="/img/dashboard_screenshot.png" alt="dashboard screenshot" />
 
 For even more detail, a tail logging session for your deployed backend can be started by running `npx syncosaurus tail`
 
@@ -625,7 +625,10 @@ When choosing a provider to build on, we narrowed in on a couple of options.
 
 First, we could have built our serverless edge infrastructure using a combination of AWS Lambda@Edge, Amazon API Gateway, and a persistent storage mechanism like AWS Dynamo DB:
 
-[TODO insert graphic]
+<img
+  src="/img/diagrams/AWS-Lambda-Diagram.png"
+  alt="AWS Architecture Diagram"
+/>
 
 While this is a valid approach, it does involve provisioning and connecting several components which can increase the complexity of deployment and maintenance.
 
@@ -649,7 +652,7 @@ When engineering Syncosuaurus, we had to be thoughtful about the efficiency of t
 
 A naive implementation of authoritative updates sent from the server to clients would be to broadcast the entire state from the server to all clients when each change occurs.
 
-<AbsoluteUpdates />
+<StateUpdates />
 
 However, an issue with this approach is that as the document grows in size, the message size containing the authoritative state sent from the server to the client will grow equivalently. This has two consequences:
 

@@ -12,7 +12,7 @@ import tailwindPlugin from './plugins/tailwind-config.cjs'
 const config = {
   title: 'Syncosaurus',
   tagline:
-    "A performant, collaborative, real-time Javascript framework that enables developers to focus on their application's features and business logic, instead of the complexities of state synchronization and conflict resolution.",
+    'An open-source framework for real-time, collaborative web applications',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -66,15 +66,18 @@ const config = {
         title: 'Syncosaurus',
         logo: {
           alt: 'Syncosaurus Logo',
-          src: 'img/logo.svg',
+          src: 'img/icons/logo_transparent.png',
         },
         items: [
           { to: '/case-study', label: 'Case Study', position: 'right' },
           { to: '/team', label: 'The Team', position: 'right' },
           { type: 'doc', label: 'Docs', docId: 'index', position: 'right' },
           {
-            to: 'https://github.com/syncosaurus',
-            label: 'Github',
+            type: 'html',
+            value: `
+              <a className="navbar__item" style={ text-decoration: none, color: black } href=https://github.com/syncosaurus>
+                Github <svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
+              </a>`,
             position: 'right',
           },
         ],
@@ -102,14 +105,20 @@ const config = {
                 label: 'Docs',
                 to: '/docs',
               },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
               {
-                label: 'GitHub',
-                to: 'https://github.com/syncosaurus',
+                html: `
+                  <a className="navbar__item" style={ text-decoration: none, color: black } href=https://github.com/syncosaurus>
+                    Github <svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" className="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
+                  </a>`,
               },
             ],
           },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Syncosaurus`,
+        ]
       },
       prism: {
         theme: prismThemes.github,

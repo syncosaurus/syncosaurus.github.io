@@ -51,7 +51,7 @@ const Slider = styled(BaseSlider)(
   display: inline-block;
   position: relative;
   margin-top: 0.75rem;
-  cursor: pointer;
+  cursor: ${delay === 0 ? "pointer" : null};
   touch-action: none;
   -webkit-tap-highlight-color: transparent;
 
@@ -115,7 +115,7 @@ const Slider = styled(BaseSlider)(
     }
 
     &.${sliderClasses.active} {
-      box-shadow: 0 0 0 8px ${alpha("#99CCF3", 0.5)};
+      ${delay === 0 ? `box-shadow: 0 0 0 8px ${alpha("#99CCF3", 0.5)}` : null};
       outline: none;
       width: 100px;
       height: 100px;

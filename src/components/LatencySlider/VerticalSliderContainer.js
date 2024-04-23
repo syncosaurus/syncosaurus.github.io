@@ -6,8 +6,9 @@ const VerticalSliderContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   padding: '3rem',
   margin: '5rem',
-  marginTop: '0rem',
-  gap: theme.spacing(30), // Adjust the gap between sliders
+  marginBottom: '0.75rem',
+  marginTop: '0.75rem',
+  gap: theme.spacing(50), // Adjust the gap between sliders
 }));
 
 export default VerticalSliderContainer;

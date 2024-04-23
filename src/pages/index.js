@@ -3,30 +3,16 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import HomepageFeatures from '@site/src/components/HomepageFeatures'
 import Puzzle from '@site/src/components/Puzzle'
-import { useState, useEffect, useRef } from 'react'
+import { useRef } from 'react'
 
 export default function Home() {
   const featureRef = useRef(null)
-  const [scrollDownArrowOpacity, setScrollDownArrowOpacity] = useState(0.9)
-
-  const setScroll = () => {
-    const displayValue =
-      window.scrollY / document.body.scrollHeight < 0.05 ? 1 : 0;
-    setScrollDownArrowOpacity(displayValue)
-  }
 
   const handleScrollClick = () => {
     if (featureRef.current) {
-      featureRef.current.scrollIntoView({ behavior: 'smooth'});
+      featureRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
-  useEffect(() => {
-    window.addEventListener('scroll', setScroll)
-    return () => {
-      window.removeEventListener('scroll', setScroll)
-    }
-  }, [])
 
   const { siteConfig } = useDocusaurusContext()
 
@@ -44,7 +30,7 @@ export default function Home() {
       <div className="pt-2 pb-20">
         <Link
           href="#_"
-          className="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-xl text-white font-lg font-800 bg-syncoGreen shadow-lg shadow-green-500/400 rounded-md hover:syncoGreen-800 hover:no-underline sm:w-auto sm:mb-0"
+          className="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-xl text-white font-lg font-800 bg-syncoGreen hover:shadow-lg syncoGreen-400/500 rounded-md hover:syncoGreen-800 hover:no-underline sm:w-auto sm:mb-0"
           data-primary="green-500"
           data-rounded="rounded-3xl"
           data-primary-reset="{}"
@@ -55,8 +41,7 @@ export default function Home() {
       </div>
       <div className="pt-8 pb-0">
         <img
-          style={{ opacity: scrollDownArrowOpacity  }}
-          className="opacity-10 animate-pulse"
+          className="cursor-pointer opacity-10 animate-pulse"
           src="/img/icons/scroll-down-arrow.png"
           onClick={handleScrollClick}
         ></img>

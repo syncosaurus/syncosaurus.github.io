@@ -2,6 +2,7 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import HomepageFeatures from '@site/src/components/HomepageFeatures'
+import HomepageBenefits from '@site/src/components/Benefits'
 import Puzzle from '@site/src/components/Puzzle'
 import { useRef } from 'react'
 
@@ -48,6 +49,7 @@ export default function Home() {
       </div>
     </div>
       <main ref={featureRef}>
+        <HomepageBenefits />
         <HomepageFeatures />
       </main>
     </Layout>

@@ -21,7 +21,7 @@ export default function Home() {
     <Layout description="Syncosaurus Homepage">
       <div
       id="hero-landing"
-      className="font-sans h-11/12 rounded-3xl lg:rounded-tl-2xl lg:rounded-bl-2xl overflow-hidden m-1 pt-10 pb-5 flex flex-col text-center items-center bg-gradient-to-br from-slate-900 via-slate-800 to-syncoBlue"
+      className="font-sans h-11/12 rounded-3xl lg:rounded-tl-2xl lg:rounded-bl-2xl shadow-md overflow-hidden m-1 pt-10 pb-5 flex flex-col text-center items-center bg-gradient-to-br from-slate-900 via-slate-800 to-syncoBlue"
     >
       <Puzzle />
       <h1 className="font-jakarta text-6xl font-bold text-white m-8">{siteConfig.title}</h1>

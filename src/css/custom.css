@@ -134,6 +134,13 @@
   align-self: center;
 }
 
+.benefits-bar {
+  align-items: center;
+  align-self: center;
+  width: 99.5%;
+
+}
+
 .col--2 {
   --ifm-col-width: calc(20%);
 }

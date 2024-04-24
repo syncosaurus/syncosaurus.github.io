@@ -198,6 +198,46 @@ export const NoConflictEdits = () => {
 ></object>
 }
 
+export const Subscriptions = () => {
+  return <object
+  type="image/svg+xml"
+  data="/img/diagrams/diag-Subscriptions.svg"
+  className="w-96"
+></object>
+}
+
+export const DashboardArchitecture = () => {
+  return <object
+  type="image/svg+xml"
+  data="/img/diagrams/diag-Dashboard-Architecture.svg"
+  className="w-96"
+></object>
+}
+
+export const CloudflareArchitecture = () => {
+  return <object
+  type="image/svg+xml"
+  data="/img/diagrams/diag-cloudflare-architecture.svg"
+  className="w-96"
+></object>
+}
+
+export const GlobalRooms = () => {
+  return <object
+  type="image/svg+xml"
+  data="/img/diagrams/diag-global-rooms.svg"
+  className="w-96"
+></object>
+}
+
+export const SnapshotID = () => {
+  return <object
+  type="image/svg+xml"
+  data="/img/diagrams/diag-snapshotId.svg"
+  className="w-96"
+></object>
+}
+
 export const Template = () => {
   return <object
   type="image/svg+xml"

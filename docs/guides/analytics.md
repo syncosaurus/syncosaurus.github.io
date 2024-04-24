@@ -8,7 +8,7 @@ Syncosaurus includes an application analytics tool to easily view and analyze ag
 
 ## Setup
 
-1. Clone the repository to your local environment, and install the required dependencies:
+1. Clone the following repository to your local environment:
    ```shell
    git clone https://github.com/syncosaurus/syncosaurus-dashboard.git
    ```

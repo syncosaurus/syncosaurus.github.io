@@ -24,7 +24,7 @@ npx syncosaurus dev
 
 If your file structure adheres to Syncosaurus rules, and your configuration settings are correct, two localhost addresses will be displayed in your terminal output:
 - a localhost address for your local Syncosaurus server
-	- The port used will be the port you designated in the `syncosaurus.json` file. If one is not specified there, the local Syncosaurus server will default to port 3001.
+	- The port used will be the port you designated in the `syncosaurus.json` file. If one is not specified there, the local Syncosaurus server will default to port 8787.
 - a localhost address for your local Vite UI server
 	- The port used will be determined by Vite. Vite's default port is port 5173. If that port is being used, Vite will find and designate the next available port.
 
@@ -81,12 +81,10 @@ If your application was configured correctly, the URL to your deployed applicati
 
 ```shell
 ❯ npx syncosaurus deploy
- 🦖 syncosaurus 0.7.1
+Checking for Syncosaurus installation...... found
+Deploying your Syncosaurus worker...... done!
 --------------------------------------------------
-
-Evolving your Syncosaurus server... done!
-
-✅ Success! Your Syncosaurus server is available at https://dino-arcade.ducky.workers.dev
+🦖 Your deployed Syncosaurus worker is ready at https://dino-arcade.ducky.workers.dev
 ```
 
 To deploy your frontend, simply add the provided Syncosaurus server URL as an environment variable to your frontend deployment.

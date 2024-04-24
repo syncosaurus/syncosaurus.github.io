@@ -1,7 +1,3 @@
-import clsx from 'clsx'
-import Heading from '@theme/Heading'
-import styles from './styles.module.css'
-
 import FadeInSection from './FadeInSection'
 
 export default function HomepageFeatures() {
@@ -20,7 +16,7 @@ export default function HomepageFeatures() {
               <div className="mb-12 w-full shrink-0 grow-0 basis-auto lg:mb-0 lg:w-5/12 ">
                 <object
                   type="image/svg+xml"
-                  data="/img/diagrams/diag-whiteboard-demo-dual.svg"
+                  data="img/diagrams/diag-whiteboard-demo-dual.svg"
                 ></object>
               </div>
               <div className="w-full shrink-0 grow-0 basis-auto lg:w-7/12 align-middle">
@@ -34,11 +30,11 @@ export default function HomepageFeatures() {
                       real-time, collaborative web applications. But what
                       happens when multiple clients make conflicting changes
                       simultaneously? <br></br> <br></br>
-                      Synocusaurus provides the backbone for
-                      both performant state synchronization <i>and</i> flexible
-                      conflict resolution logic using client-side prediction and
-                      server reconcilliation, techniques developed originally
-                      for multi-player video games.
+                      Synocusaurus provides the backbone for both performant
+                      state synchronization <i>and</i> flexible conflict
+                      resolution logic using client-side prediction and server
+                      reconcilliation, techniques developed originally for
+                      multi-player video games.
                     </p>
                   </div>
                 </div>
@@ -56,8 +52,8 @@ export default function HomepageFeatures() {
                   Easy Development and Deployment
                 </h2>
                 <p className="text-2xl text-pretty">
-                  Seamlessly create, iterate, deploy, and manage your Syncosaurus
-                  applications with our convenient CLI tool.
+                  Seamlessly create, iterate, deploy, and manage your
+                  Syncosaurus applications with our convenient CLI tool.
                 </p>
               </div>
               <div className="w-full shrink-0 grow-0 basis-auto lg:w-8/12 align-center">
@@ -95,8 +91,9 @@ export default function HomepageFeatures() {
                       Built-in Analytics
                     </h2>
                     <p className="text-2xl text-pretty">
-                      Monitor your collaborative application's usage metrics, in aggregate or on a
-                      per-room basis, with our beautiful dashboard application.
+                      Monitor your collaborative application's usage metrics, in
+                      aggregate or on a per-room basis, with our beautiful
+                      dashboard application.
                     </p>
                   </div>
                 </div>

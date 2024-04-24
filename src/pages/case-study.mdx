@@ -28,6 +28,11 @@ import {
   WhiteboardDemo,
   WhiteboardDemoLatency,
   NoConflictEdits,
+  Subscriptions,
+  DashboardArchitecture,
+  CloudflareArchitecture,
+  GlobalRooms,
+  SnapshotID,
 } from '@site/src/components/Diagrams/index.js'
 
 # Overview
@@ -411,6 +416,7 @@ To use Syncosaurus in a React application’s code, one should import and initia
 const synco = new Syncosaurus({
   mutators,
   userID: user.id,
+  server: ws://localhost:8787 // The dev server runs on port 8787 by default
 });
 ```
 
@@ -573,9 +579,15 @@ Go ahead and enter some todos into Client 1 and watch them appear on Client 2 af
 
 ## Deployment
 
-After you’re satisfied with the local version of the application, it can be deployed to Cloudflare by running `npx syncosaurus deploy`. Your deployed Cloudflare architecture will consist of Cloudflare Workers and Durable Objects. For each room your clients create, a new Durable Object will be created and any client will be able to connect to it through a worker:
+After you’re satisfied with the local version of the application, it can be deployed to Cloudflare by running `npx syncosaurus deploy`. Once the CLI completes deploying, simply update the `server` URL provided to your Syncosaurus object at instantiation. Note the switch from the `ws` to the `wss` scheme.
 
-[TODO insert screenshot of architecture]
+```Javascript
+const synco = new Syncosaurus({
+  mutators,
+  userID,
+  server: 'wss://[PROJECT_NAME].[ACCOUNT_NAME].workers.dev',
+});
+```
 
 ## Monitoring
 
@@ -583,7 +595,10 @@ After your application is deployed, you can monitor its usage and get help debug
 
 The dashboard includes hourly time-series metrics related to errors and usage for each room so you can verify users are able to access and use the application in a bug-free manner
 
-<img src="/img/dashboard_screenshot.png" alt="dashboard screenshot" />
+<img
+  src="/img/screenshots/dashboard_screenshot.png"
+  alt="dashboard screenshot"
+/>
 
 For even more detail, a tail logging session for your deployed backend can be started by running `npx syncosaurus tail`
 
@@ -599,7 +614,7 @@ Before we can discuss the architecture of Syncosaurus, it’s important to summa
 - Multiple concurrent rooms (maintaining WebSocket connections and broadcasting messages)
 - Persistent storage of documents
 
-[TODO insert graphic of multiple rooms with clients connected and a new client trying to connect to a particular room]
+<GlobalRooms />
 
 ## Architecture
 
@@ -634,7 +649,7 @@ While this is a valid approach, it does involve provisioning and connecting seve
 
 As previously mentioned, we instead ended up choosing a Cloudflare-based architecture consisting of Workers and Durable Objects due to its simplicity and extremely strong fit for our use case.
 
-[TODO insert graphic]
+<CloudflareArchitecture />
 
 A Worker is an edge-based serverless function on the Cloudflare network. A Durable Object (DO) is a special type of Worker - a globally unique [JavaScript isolate ](https://v8docs.nodesource.com/node-0.8/d5/dda/classv8_1_1_isolate.html)(a unique JS engine) with access to its own private strongly consistent [storage](https://developers.cloudflare.com/durable-objects/api/transactional-storage-api/) and built-in [caching](https://developers.cloudflare.com/durable-objects/reference/in-memory-state/#:~:text=The%20Durable%20Object's%20storage%20has,be%20instantly%20returned%20from%20cache.).
 
@@ -671,7 +686,7 @@ As mentioned, a risk of using delta updates is the heightened potential for miss
 
 To do so, we implemented an incrementing `batchID` which is sent by the DO as a property on every update message broadcasted to the clients. Each client tracks the `batchID` of the last message it received from the DO and when it receives a new message, it compares the previous `batchID` against the new one to determine if it missed an update. If a client misses an update, it sends a special request to the DO for a copy of the entire latest state.
 
-[TODO insert diagram of process]
+<SnapshotID />
 
 Note that sending only the delta updates missed could reduce the state recovery message size and latency, however, the DO currently does not keep a log of the updates it broadcasts. This is an area for future investigation since it would likely create greater memory and storage demands on the DO.
 
@@ -710,7 +725,7 @@ An additional consideration was reducing unnecessary client-side rendering in Re
 
 To make subscriptions fit React’s granular rendering model, we decided to allow developers to write query functions on per component basis that indicate which keys in the local store they want to watch for updates (known as a key “watchlist”). Furthermore, by allowing subscriptions to accept a query callback, the developer can transform data in this callback before returning the value to React to be rendered. Finally, an additional mechanism we put in place to reduce unnecessary re-renders was a check to ensure the result of the query had changed since its last rerender (i.e. memoization), otherwise a new render would not be initiated.
 
-[TODO insert diagram of process]
+<Subscriptions />
 
 Though, there may be additional memory overhead with memoizing query results and maintaining a key watchlist, eliminating unnecessary UI re-renders and making subscriptions more robust leads to a snappier UI and gives developers more control over the rendering of their application, respectively.
 
@@ -732,7 +747,7 @@ The Syncosaurus framework supports token-based authentication that allows a deve
 
 As demonstrated, Syncosaurus includes an analytics tool to easily view and analyze aggregate and single-room metrics for an application. The dashboard allows a developer to gain insights into usage and debug their application if necessary. The architecture for the analytics dashboard displays data from Cloudflare’s endpoints and visualizes it in a locally running front-end application that pulls from a custom-built GraphQL backend:
 
-[TODO insert graphic]
+<DashboardArchitecture />
 
 # Future of Syncosaurus
 

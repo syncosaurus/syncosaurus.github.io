@@ -23,7 +23,7 @@ export default function LatencySlider() {
     <>
       <FormControl sx={{ display: "inline-block" }}>
         <FormHelperText sx={{ fontSize: "17px" }}>Latency</FormHelperText>
-        <Select sx={{ width: "120px" }}value={secondSliderlatency} onChange={handleLatencyChange}>
+        <Select sx={{ width: "120px", height: "30px" }} value={secondSliderlatency} onChange={handleLatencyChange}>
           <MenuItem value={50}> 50 ms</MenuItem>
           <MenuItem value={150}>150 ms</MenuItem>
           <MenuItem value={300}>300 ms</MenuItem>

@@ -13,8 +13,6 @@ npx syncosaurus setup
 
 That's it! Make sure to correctly configure your Syncosaurus application before deployment - see here for details.
 
-Note that Syncosaurus currently only supports applications built with either React or a React-based framework.
-
 ## Spin up a local development environment
 
 A local development environment makes it significantly easier to rapidly iterate, test, and debug your application in a consistent, controlled setting. Syncosaurus comes built-in with a local Syncosaurus server.
@@ -40,10 +38,10 @@ Press 'x' to gracefully shut down the server
 Make sure to update your `server` value in your Syncosaurus constructor calls in your application code:
 
 ```js title="/src/components/App.jsx"
-import mutators from './mutators.js';
+import mutators from '../mutators.js';
 
 const synco = new Syncosaurus({
-	// update this value to the local Syncosaurus server URL
+	// highlight-next-line
 	server: "http://localhost:8787",
 	userID: "my-user-id",
 	auth: "4fJbGOWma=QEebX6H1X6AAe3/yok1R-fwKMqot5XOvxPU0YwI!sm8nQ!"
@@ -53,14 +51,15 @@ const synco = new Syncosaurus({
 
 ## Deploy your Syncosaurus project
 
-When you are ready to deploy your Syncosaurus application, make sure the following requirements are first met:
+Before you deploy your Syncosaurus application, make sure the following requirements are met:
 
-1. Make sure that you are logged in to Cloudflare.
-	1. You can check your login status with `syncosaurus whoami`
-	2. If you are not logged in, run `syncosaurus login` and provide your Cloudflare credentials via OAuth or API token.
-2. Navigate to your root directory of your project, which needs to have a `syncosaurus.json` configuration file.
-3. Make sure your mutators are correctly defined in your `mutators.js` file, and your `mutators.js` file is located in the `src` sub-directory.
-4. Make sure your authentication handler is correctly defined in your `authHandler.js` file, and your `authHandler.js` file is located in the `src` sub-directory.
+- You are logged in to Cloudflare.
+	- You can check your login status with `syncosaurus whoami`
+	- If you are not logged in, run `syncosaurus login` and log in via OAuth or API token.
+- You are in the root directory of your project, which must have `syncosaurus.json` configuration file.
+- Your mutators are correctly defined in your `mutators.js` file, and your `mutators.js` file is located in the `src` sub-directory.
+- Your `auth` value is defined correctly in the Syncosaurus constructor
+- Your authentication handler is correctly defined in your `authHandler.js` file, and your `authHandler.js` file is located in the `src` sub-directory.
 
 Once the above requirements have been fulfilled, run the following command in your terminal:
 
@@ -68,17 +67,14 @@ Once the above requirements have been fulfilled, run the following command in yo
 npx syncosaurus deploy
 ```
 
-If your application was configured correctly, the URL to your deployed application should be displayed in your terminal output, which will look akin to the output displayed below:
+If your application was configured correctly, the URL to your deployed application should be displayed in your terminal output, which should look similar to the output displayed below:
 
 ```shell
 ❯ npx syncosaurus deploy
- 🦖 syncosaurus 0.7.1
+Checking for Syncosaurus installation...... found
+Deploying your Syncosaurus worker...... done!
 --------------------------------------------------
-
-Evolving your Syncosaurus server... done!
-
-✅ Success! Your Syncosaurus server is available at
-  https://my-cool-app.johnsmith.workers.dev
+🦖 Your deployed Syncosaurus worker is ready at https://dino-arcade.petrie.workers.dev
 ```
 
-To deploy your frontend, simply add this URL as an environment variable in your frontend application's directory.
+To deploy your frontend, simply add the provided Syncosaurus server URL as an environment variable to your frontend deployment.

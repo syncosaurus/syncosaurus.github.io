@@ -16,12 +16,12 @@ This is the name of your Syncosaurus project. This value will be used when deplo
 
 ### `msgFrequency`
 
-This is the amount of time (in milliseconds) that subsequent message broadcast of app updates should be delayed.
+This is the amount of time (in milliseconds) that subsequent message broadcasts of app updates should be delayed.
 The default value of `msgFrequency` is `16` (ms), which equates to approximately 62.5 broadcasted updates per second.
 
 ### `useStorage`
 
-This value determines whether your application persists data to the Syncosaurus server using [Cloudflare's Transactional Storage API](https://developers.cloudflare.com/durable-objects/api/transactional-storage-api/)
+This value determines whether your application persists data to the Syncosaurus server using [Cloudflare's Transactional Storage API](https://developers.cloudflare.com/durable-objects/api/transactional-storage-api/).
 
 The default value of `useStorage` is `false`.
 

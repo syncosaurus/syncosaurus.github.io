@@ -1,7 +1,3 @@
-import clsx from 'clsx'
-import Heading from '@theme/Heading'
-import styles from './styles.module.css'
-
 import FadeInSection from './FadeInSection'
 
 export default function HomepageFeatures() {
@@ -22,7 +18,7 @@ export default function HomepageFeatures() {
               <div className="mb-12 w-full shrink-0 grow-0 basis-auto lg:mb-0 lg:w-5/12 ">
                 <object
                   type="image/svg+xml"
-                  data="/img/diagrams/diag-whiteboard-demo-dual.svg"
+                  data="img/diagrams/diag-whiteboard-demo-dual.svg"
                 ></object>
               </div>
               <div className="w-full shrink-0 grow-0 basis-auto lg:w-7/12 align-middle">

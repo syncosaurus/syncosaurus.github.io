@@ -13,6 +13,7 @@ export default function HomepageFeatures() {
           <div className="mt-5">
             <div className="mx-auto h-[2px] max-w-md bg-gradient-to-r from-transparent via-syncoGreen to-transparent"></div>
           </div>
+        </div>
       </FadeInSection>
       <FadeInSection>
         <div className="w-9/12 h-30 py-10 my-20 mx-auto md:px-6">

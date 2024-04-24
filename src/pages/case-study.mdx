@@ -331,13 +331,9 @@ As mentioned, Syncosaurus uses a real-time syncing model with transactional conf
 
 - When a client makes a change to state, it is immediately applied to the client’s locally and the client places a copy of the intent of the change (i.e. a state mutation) in a pending queue.
 
-<SyncingModel2 />
-
-- Next, the mutation is sent across the WebSocket connection to the Syncosaurus server.
-
 <SyncingModel3 />
 
-- Once the change is made to the authoritative state, the server sends a confirmation update to the client, which the client then uses to update its state to match the server and remove the pending state mutation from the queue.
+- Next, the mutation is sent across the WebSocket connection to the Syncosaurus server. Once the change is made to the authoritative state, the server sends a confirmation update to the client, which the client then uses to update its state to match the server and remove the pending state mutation from the queue.
 
 <SyncingModel4 />
 

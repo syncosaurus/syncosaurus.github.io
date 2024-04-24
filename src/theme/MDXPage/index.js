@@ -47,7 +47,7 @@ export default function MDXPage(props) {
                 />
               </div>
             )}
-            <div className={clsx('col', !hideTableOfContents && 'col--8')}>
+            <div className={clsx('col', !hideTableOfContents && 'col')}>
               {unlisted && <Unlisted />}
               <article>
                 <MDXContent>

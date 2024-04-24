@@ -71,12 +71,10 @@ If your application was configured correctly, the URL to your deployed applicati
 
 ```shell
 ❯ npx syncosaurus deploy
- 🦖 syncosaurus 0.7.1
+Checking for Syncosaurus installation...... found
+Deploying your Syncosaurus worker...... done!
 --------------------------------------------------
-
-Evolving your Syncosaurus server... done!
-
-✅ Success! Your Syncosaurus server is available at https://dino-arcade.petrie.workers.dev
+🦖 Your deployed Syncosaurus worker is ready at https://dino-arcade.petrie.workers.dev
 ```
 
 To deploy your frontend, simply add the provided Syncosaurus server URL as an environment variable to your frontend deployment.

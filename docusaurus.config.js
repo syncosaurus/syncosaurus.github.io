@@ -66,7 +66,7 @@ const config = {
         title: 'Syncosaurus',
         logo: {
           alt: 'Syncosaurus Logo',
-          src: 'img/icons/logo_transparent.png',
+          src: 'img/icons/logo_transparent.svg',
         },
         items: [
           { to: '/case-study', label: 'Case Study', position: 'right' },
@@ -118,7 +118,7 @@ const config = {
               },
             ],
           },
-        ]
+        ],
       },
       prism: {
         theme: prismThemes.github,

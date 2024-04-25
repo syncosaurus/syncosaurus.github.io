@@ -15,7 +15,7 @@ export default function Team() {
             <img
               src="/img/team/alex.jpeg"
               alt="Alex Sklar"
-              className="mix-blend-screen mb-4 mt-4 block w-11/12 max-w-[200px] rounded-full"
+              className="mb-4 mt-4 block w-11/12 max-w-[200px] rounded-full"
             />
             <h3 className="text-syncoBlue mb-3 mt-3 text-center text-2xl sm:text-lg md:text-2xl">
               Alex Sklar
@@ -57,7 +57,7 @@ export default function Team() {
             <img
               src="/img/team/erik.jpeg"
               alt="Erik Margetis"
-              className="mix-blend-screen mb-4 mt-4 block w-11/12 max-w-[200px] rounded-full"
+              className="mb-4 mt-4 block w-11/12 max-w-[200px] rounded-full"
             />
             <h3 className="text-syncoBlue mb-3 mt-3 text-center text-2xl sm:text-lg md:text-2xl">
               Erik Margetis
@@ -99,7 +99,7 @@ export default function Team() {
             <img
               src="/img/team/joseph.jpeg"
               alt="Joseph Liang"
-              className="mix-blend-screen mb-4 mt-4 block w-11/12 max-w-[200px] rounded-full"
+              className="mb-4 mt-4 block w-11/12 max-w-[200px] rounded-full"
             />
             <h3 className="text-syncoBlue mb-3 mt-3 text-center text-2xl sm:text-lg md:text-2xl">
               Joseph Liang

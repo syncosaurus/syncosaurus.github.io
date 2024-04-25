@@ -41,6 +41,8 @@ import {
   SnapshotID,
 } from '@site/src/components/Diagrams/index.js'
 
+# Case Study
+
 ## Overview
 
 Syncosaurus is a React-Javascript developer framework for rapidly building browser-based real-time, collaborative web applications backed by Cloudflare Workers and Durable Objects.
@@ -62,7 +64,9 @@ Broadly, real-time collaboration is a term used to describe software or technolo
 
 With the rise of [remote work and distributed teams](https://medium.com/@anupamr/distributed-teams-are-the-new-cloud-for-startups-14240a9822d7), apps like these [are becoming critical in the modern work environment](https://northzone.com/2023/06/20/perspectives-the-rise-of-multiplayer-software/). Well-known examples include Google Docs, Figma, and Notion among others:
 
-<img src="/img/screenshots/collaboration_tools_logos.png" />
+<figure>
+  <img src="/img/screenshots/collaboration_tools_logos.png" width="75%" />
+</figure>
 
 While [a broader definition](https://www.microsoft.com/en-us/microsoft-365/business-insights-ideas/resources/real-time-collaboration-what-it-is-and-how-it-helps-your-business) of real-time collaboration applications can include video conferencing and messaging software, those types of applications have different technical requirements and will be excluded from the scope of this case study.
 
@@ -73,13 +77,17 @@ At a fundamental level when multiple users are “collaborating” on the same a
 - Centralized
 - Decentralized
 
+#### Centralized
+
+Centralized includes the client-server architecture where client machines send resource requests to a backend server. In the client-server architecture, the server is generally [authoritative](https://medium.com/mighty-bear-games/what-are-server-authoritative-realtime-games-e2463db534d1), meaning it is the source of truth.
+
 <Centralized />
 
-**Centralized** includes the client-server architecture where client machines send resource requests to a backend server. In the client-server architecture, the server is generally [authoritative](https://medium.com/mighty-bear-games/what-are-server-authoritative-realtime-games-e2463db534d1), meaning it is the source of truth.
+#### Decentralized
+
+Decentralized such as the peer-to-peer architecture where every machine (known as a node) is treated equally and responsible for sending and responding to requests for resources. In the peer-to-peer architecture, every machine has equal authority and a consensus must usually be reached to determine the truth.
 
 <P2P />
-
-**Decentralized** such as the peer-to-peer architecture where every machine (known as a node) is treated equally and responsible for sending and responding to requests for resources. In the peer-to-peer architecture, every machine has equal authority and a consensus must usually be reached to determine the truth.
 
 Though [it is possible](https://www.tag1consulting.com/blog/yjs-webrtc-part-1) to build decentralized real-time collaboration web apps, decentralized architectures are notoriously complex. Instead [many existing real-time collaborative apps use a form of the client-server architecture](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/) due to their comparative [efficiency and ease of maintenance](https://fwx.finance/learn/article/centralized-app-vs-dapp). Therefore, we will assume that any application considering Syncosaurus will be using a form of centralized architecture.
 
@@ -103,7 +111,9 @@ The need for real-time depends on the web application and generally apps that mi
 
 To illustrate this need and the impact latency can have on a user’s experience, drag the blue slider below and notice how higher latencies cause a noticeable delay in updating the green slider’s position to match:
 
-<LatencySlider />
+<figure>
+  <LatencySlider />
+</figure>
 
 #### Achieving Real-time Communication
 
@@ -117,7 +127,9 @@ Note that using [streams over HTTP/2](https://getstream.io/blog/communication-pr
 
 ##### Long Polling
 
-Long polling is a technique to emulate server push communications via normal HTTP requests. Long polling works like this:
+Long polling is a technique to emulate server push communications via normal HTTP requests.
+
+Long polling works like this:
 
 <LongPolling />
 
@@ -125,7 +137,9 @@ Although every browser supports long polling, it has high latency compared to ot
 
 ##### WebSockets
 
-[WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket?retiredLocale=de) is an application layer protocol that provides a [full-duplex](https://www.comms-express.com/infozone/article/half-full-duplex/) communication channel over a single, long-lived connection between the client and server. This means that similar to a phone call, the connection from the client to the server will stay open as long the network is not interrupted and neither the client nor the server actively terminates it. This open connection enables clients and servers to freely exchange data without the overhead of the HTTP request-response cycle, but because it is built on top of [TCP](https://www.ibm.com/docs/ro/aix/7.1?topic=protocols-transmission-control-protocol), it still has guaranteed in-order message delivery. WebSockets work like this:
+[WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket?retiredLocale=de) is an application layer protocol that provides a [full-duplex](https://www.comms-express.com/infozone/article/half-full-duplex/) communication channel over a single, long-lived connection between the client and server. This means that similar to a phone call, the connection from the client to the server will stay open as long the network is not interrupted and neither the client nor the server actively terminates it. This open connection enables clients and servers to freely exchange data without the overhead of the HTTP request-response cycle, but because it is built on top of [TCP](https://www.ibm.com/docs/ro/aix/7.1?topic=protocols-transmission-control-protocol), it still has guaranteed in-order message delivery.
+
+WebSockets work like this:
 
 <Websockets />
 
@@ -187,7 +201,7 @@ Optimistic UI works like this:
 
 <OptimisticUI />
 
-An important implication of implementing optimistic UI is that each client has a local replica of the state that must be kept in sync with the server. Thus using it in our whiteboard app means that it now has distributed state. [Figma uses this same technique](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/) - when a client opens a Figma design file, a copy of the document is sent from the server to the client and it must be kept in sync:
+An important implication of implementing optimistic UI is that each client has a local replica of the state that must be kept in sync with the server. Thus using it in our whiteboard app means that it now has distributed state. [Figma uses this same technique](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/) - when a client opens a Figma design file, a copy of the document is sent from the server to the client and it must be kept in sync going forward:
 
 <NewClientConnection />
 
@@ -317,7 +331,9 @@ Syncosaurus is a React Javascript client-side SDK with full ready-to-be-deployed
 
 Similar to commercial solutions like Liveblocks and Reflect, Syncosaurus exposes a client-side SDK while abstracting the backend logic and handling much of the deployment - the only thing a developer has to do to get the backend deployed is sign up for a Cloudflare account and use our CLI to deploy. However, unlike the commercial solutions, the Syncosaurus framework is free to use and open source so a developer can alter the default backend code if they choose.
 
-<img src="/img/screenshots/comparison_table.png" />
+<figure>
+  <img src="/img/screenshots/comparison_table.png" />
+</figure>
 
 ## Using Syncosaurus
 
@@ -325,19 +341,19 @@ To better understand Syncosaurus we will explore the syncing model and then walk
 
 ### Syncing Model
 
-As mentioned, Syncosaurus uses a real-time syncing model with transactional conflict resolution to keep state consistent across multiple clients:
+As mentioned, Syncosaurus uses a real-time syncing model with transactional conflict resolution to keep state consistent across multiple clients.
+
+When a client makes a change to state, it is immediately applied to the client’s locally and the client places a copy of the intent of the change (i.e. a state mutation) in a pending queue.
 
 <SyncingModel1 />
 
-- When a client makes a change to state, it is immediately applied to the client’s locally and the client places a copy of the intent of the change (i.e. a state mutation) in a pending queue.
+Next, the mutation is sent across the WebSocket connection to the Syncosaurus server. Once the change is made to the authoritative state, the server sends a confirmation update to the client, which the client then uses to update its state to match the server and remove the pending state mutation from the queue.
 
 <SyncingModel3 />
 
-- Next, the mutation is sent across the WebSocket connection to the Syncosaurus server. Once the change is made to the authoritative state, the server sends a confirmation update to the client, which the client then uses to update its state to match the server and remove the pending state mutation from the queue.
+When more than one client is connected to a given room, any mutations from one client are broadcast to all other clients by the server. Because an update from the server is authoritative, all client states are guaranteed to converge.
 
 <SyncingModel4 />
-
-- When more than one client is connected to a given room, any mutations from one client are broadcast to all other clients by the server. Because an update from the server is authoritative, all client states are guaranteed to converge.
 
 ### Development
 
@@ -518,7 +534,9 @@ We have prepared a simple todo list application to illustrate the mutator and cl
 
 Go ahead and enter some todos into Client 1 and watch them appear on Client 2 after a simulated latency of 1 second:
 
-<TodoList />
+<figure>
+  <TodoList />
+</figure>
 
 ### Deployment
 
@@ -536,12 +554,15 @@ const synco = new Syncosaurus({
 
 After your application is deployed, you can monitor its usage and get help debugging via the analytics dashboard and a live tail log.
 
-The dashboard includes hourly time-series metrics related to errors and usage for each room so you can verify users are able to access and use the application in a bug-free manner
+The dashboard includes hourly time-series metrics related to errors and usage for each room so you can verify users are able to access and use your application in a bug-free manner.
 
-<img
-  src="/img/screenshots/dashboard_screenshot.png"
-  alt="dashboard screenshot"
-/>
+<figure>
+  <img
+    src="/img/screenshots/dashboard_screenshot.png"
+    alt="dashboard screenshot"
+    width="85%"
+  />
+</figure>
 
 For even more detail, a tail logging session for your deployed backend can be started by running `npx syncosaurus tail`
 
@@ -583,10 +604,13 @@ When choosing a provider to build on, we narrowed in on a couple of options.
 
 First, we could have built our serverless edge infrastructure using a combination of AWS Lambda@Edge, Amazon API Gateway, and a persistent storage mechanism like AWS Dynamo DB:
 
-<img
-  src="/img/diagrams/AWS-Lambda-Diagram.png"
-  alt="AWS Architecture Diagram"
-/>
+<figure>
+  <img
+    src="/img/diagrams/AWS-Lambda-Diagram.png"
+    alt="AWS Architecture Diagram"
+    width="50%"
+  />
+</figure>
 
 While this is a valid approach, it does involve provisioning and connecting several components which can increase the complexity of deployment and maintenance.
 

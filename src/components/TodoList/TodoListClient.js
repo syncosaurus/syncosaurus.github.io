@@ -77,6 +77,7 @@ export function TodoListClient({
         <input
           type="text"
           placeholder="Enter new todo"
+          name="todo"
           value={inputValue}
           onChange={handleChange}
         />

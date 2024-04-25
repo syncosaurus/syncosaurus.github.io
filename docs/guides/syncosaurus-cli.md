@@ -10,10 +10,9 @@ The Syncosaurus CLI application is used to conveniently create, configure, manag
 
 - It is recommended to utilize the Syncosaurus CLI with `npx` commands, without having to install the application locally.
 - If you still wish to install the Syncosaurus CLI locally, run `npm install -g syncosaurus-cli`.
+  - If you are electing to run the Syncosaurus CLI locally, simply remove the `npx` at the beginning of the commands below.
 
 ## Setup and Development Commands
-
-If you are electing to run the Syncosaurus CLI locally, simply remove the `npx` at the beginning of the commands below.
 
 ### `syncosaurus init`
 

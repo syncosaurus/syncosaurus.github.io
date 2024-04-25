@@ -347,42 +347,26 @@ export const DashboardArchitecture = () => {
 
 export const CRDT = () => {
   return (
+    <figure>
     <object
       type="image/svg+xml"
       data="/img/diagrams/diag-CRDT.svg"
-      className="w-96"
-    ></object>
+      className="w-8/12"
+      ></object>
+      <figcaption></figcaption>
+    </figure>
   )
 }
 
 export const OT = () => {
   return (
-    <object
-      type="image/svg+xml"
-      data="/img/diagrams/diag-OT.svg"
-      className="w-96"
-    ></object>
-  )
-}
-
-export const SyncingModel2 = () => {
-  return (
-    <div className="flex justify-center mt-24">
+    <figure>
       <object
         type="image/svg+xml"
-        data="/img/diagrams/diag-syncingModel-2.svg"
-        className="h-64"
+        data="/img/diagrams/diag-OT.svg"
+        className="w-8/12"
       ></object>
-    </div>
-  )
-}
-
-export const Template = () => {
-  return (
-    <object
-      type="image/svg+xml"
-      data="/img/diagrams/diag-Template.svg"
-      className="w-96"
-    ></object>
+      <figcaption></figcaption>
+    </figure>
   )
 }

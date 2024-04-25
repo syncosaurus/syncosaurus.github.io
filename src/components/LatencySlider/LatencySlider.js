@@ -20,7 +20,7 @@ export default function LatencySlider() {
   }
 
   return (
-    <>
+    <div className="flex justify-start w-auto">
       <FormControl sx={{ display: 'inline-block' }}>
         <FormHelperText sx={{ fontSize: '17px' }}>Latency</FormHelperText>
         <Select
@@ -51,6 +51,6 @@ export default function LatencySlider() {
           handleMainSliderChange={handleMainSliderChange}
         />
       </VerticalSliderContainer>
-    </>
+    </div>
   )
 }

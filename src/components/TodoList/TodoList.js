@@ -29,7 +29,7 @@ export default function TodoList() {
   }
   if (windowWidth < 1094) {
     return (
-      <div className="grid grid-cols-1 gap-0 justify-center">
+      <div className="grid grid-cols-1 gap-0 justify-center text-left">
         <TodoListClient
           serverTodoList={todoList}
           onSubmit={handleSubmit}
@@ -54,7 +54,7 @@ export default function TodoList() {
   }
 
   return (
-    <div className="flex">
+    <div className="flex text-left">
       <TodoListClient
         serverTodoList={todoList}
         onSubmit={handleSubmit}

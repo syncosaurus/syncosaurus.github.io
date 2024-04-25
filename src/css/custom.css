@@ -179,3 +179,17 @@ figcaption {
   text-align: center;
   line-height: 1.75rem;
 }
+
+.comparison {
+  margin-top: 3rem;
+}
+
+.todo-list-app {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.analytics {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}

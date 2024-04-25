@@ -1,36 +1,39 @@
-import { Slider as BaseSlider, sliderClasses } from "@mui/base/Slider";
-import { styled, alpha, Box } from "@mui/material";
-import { useState, useEffect } from "react";
+import { Slider as BaseSlider, sliderClasses } from '@mui/base/Slider'
+import { styled, alpha, Box } from '@mui/material'
+import { useState, useEffect } from 'react'
 
 export default function VerticalSlider({
   handleMainSliderChange,
   value,
   delay,
 }) {
-  const [currentValue, setCurrentValue] = useState(value);
+  const [currentValue, setCurrentValue] = useState(value)
 
   useEffect(() => {
     setTimeout(() => {
-      setCurrentValue(value);
-    }, delay);
-  }, [value, delay]);
+      setCurrentValue(value)
+    }, delay)
+  }, [value, delay])
 
   const handleChange = (_, newValue) => {
-    setCurrentValue(newValue);
-    handleMainSliderChange(null, newValue);
-  };
+    setCurrentValue(newValue)
+    handleMainSliderChange(null, newValue)
+  }
 
   return (
-    <Box sx={{ height: 300, paddingBottom: '0.50rem', display: 'inline-block' }}>
+    <Box
+      sx={{ height: 300, paddingBottom: '0.50rem', display: 'inline-block' }}
+    >
       <Slider
         orientation="vertical"
         value={currentValue}
-        sx={{ marginBottom: "4em" }}
+        sx={{ marginBottom: '4em' }}
         delay={delay}
         onChange={delay === 0 ? handleChange : null}
+        className={delay === 0 ? '' : 'opacity-40'}
       />
     </Box>
-  );
+  )
 }
 
 // Blue Gradient
@@ -45,14 +48,14 @@ export default function VerticalSlider({
 
 const Slider = styled(BaseSlider)(
   ({ delay }) => `
-  color: ${delay === 0 ? "#007FFF" : "red"};
+  color: ${delay === 0 ? '#1D3370' : '#7ED348'};
   height: 95%;
   width: 4px;
   display: inline-block;
   position: relative;
   margin-top: 0.75rem;
-  margin-right: 3.25rem;
-  cursor: ${delay === 0 ? "pointer" : null};
+  margin-right: 0.25rem;
+  cursor: ${delay === 0 ? 'pointer' : null};
   touch-action: none;
   -webkit-tap-highlight-color: transparent;
 
@@ -90,37 +93,37 @@ const Slider = styled(BaseSlider)(
     align-items: center;
     justify-content: center;
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     box-sizing: border-box;
     border-radius: 50%;
     outline: 0;
-    background-color: ${delay === 0 ? "#007FFF" : "red"};
+    background-color: ${delay === 0 ? '#1D3370' : '#7ED348'};
     left: 50%;
     -webkit-transform: translate(-50%, 50%);
     -moz-transform: translate(-50%, 50%);
     -ms-transform: translate(-50%, 50%);
     transform: translate(-50%, 50%);
     transition-property: box-shadow, width, height;
-    transition-timing-function: step(${(350/delay)}, jump-none);
-    transition-duration: ${350-delay}ms;
+    transition-timing-function: step(${350 / delay}, jump-none);
+    transition-duration: ${350 - delay}ms;
     transition-behavior: allow-discrete;
 
     &:hover {
-      ${delay === 0 ? `box-shadow: 0 0 0 6px ${alpha("#99CCF3", 0.3)}` : null};
+      ${delay === 0 ? `box-shadow: 0 0 0 6px ${alpha('#99CCF3', 0.3)}` : null};
     }
 
     &.${sliderClasses.focusVisible} {
-      ${delay === 0 ? `box-shadow: 0 0 0 8px ${alpha("#99CCF3", 0.5)}` : null};
+      ${delay === 0 ? `box-shadow: 0 0 0 8px ${alpha('#99CCF3', 0.5)}` : null};
       outline: none;
     }
 
     &.${sliderClasses.active} {
-      ${delay === 0 ? `box-shadow: 0 0 0 8px ${alpha("#99CCF3", 0.5)}` : null};
+      ${delay === 0 ? `box-shadow: 0 0 0 8px ${alpha('#99CCF3', 0.5)}` : null};
       outline: none;
-      width: 100px;
-      height: 100px;
+      width: 50px;
+      height: 50px;
     }
   }
 `
-);
+)

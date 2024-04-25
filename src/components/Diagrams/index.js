@@ -1,12 +1,12 @@
 export const Centralized = () => {
   return (
-    <figure>
+    <figure className="mt-12 mb-12">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-centralized.svg"
         className="w-1/2"
       ></object>
-      <figcaption className="text-gray-400">
+      <figcaption>
         Centralized architecture with one server and three clients
       </figcaption>
     </figure>
@@ -15,7 +15,7 @@ export const Centralized = () => {
 
 export const P2P = () => {
   return (
-    <figure>
+    <figure className="mt-12 mb-12">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-p2p.svg"
@@ -28,7 +28,7 @@ export const P2P = () => {
 
 export const LongPolling = () => {
   return (
-    <figure>
+    <figure className="mt-8 mb-12">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-long-polling.svg"
@@ -44,7 +44,7 @@ export const LongPolling = () => {
 
 export const Websockets = () => {
   return (
-    <figure>
+    <figure className="mt-8 mb-12">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-websocket-handshake.svg"
@@ -89,7 +89,7 @@ export const OptimisticUI = () => {
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-optimistic-ui.svg"
-        className="w-3/4"
+        className="w-10/12"
       ></object>
       <figcaption></figcaption>
     </figure>
@@ -124,7 +124,7 @@ export const WhiteboardConflict = () => {
 
 export const RelativeUpdate = () => {
   return (
-    <figure>
+    <figure className="mt-12 mb-14">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-relative-update.svg"
@@ -137,7 +137,7 @@ export const RelativeUpdate = () => {
 
 export const AbsoluteUpdates = () => {
   return (
-    <figure>
+    <figure className="mt-12 mb-14">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-absolute-update.svg"
@@ -150,7 +150,7 @@ export const AbsoluteUpdates = () => {
 
 export const NoConflictEdits = () => {
   return (
-    <figure>
+    <figure className="mt-12 mb-14">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-no-conflict-edits.svg"
@@ -163,7 +163,7 @@ export const NoConflictEdits = () => {
 
 export const ConflictEdits = () => {
   return (
-    <figure>
+    <figure className="mt-12 mb-14">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-conflict-edits.svg"
@@ -174,9 +174,35 @@ export const ConflictEdits = () => {
   )
 }
 
+export const CRDT = () => {
+  return (
+    <figure className="mt-16 mb-14">
+      <object
+        type="image/svg+xml"
+        data="/img/diagrams/diag-CRDT.svg"
+        className="w-11/12"
+      ></object>
+      <figcaption></figcaption>
+    </figure>
+  )
+}
+
+export const OT = () => {
+  return (
+    <figure className="mt-16 mb-10">
+      <object
+        type="image/svg+xml"
+        data="/img/diagrams/diag-OT.svg"
+        className="w-11/12"
+      ></object>
+      <figcaption></figcaption>
+    </figure>
+  )
+}
+
 export const SyncingModel1 = () => {
   return (
-    <figure>
+    <figure className="mt-8 mb-8">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-syncingModel-1.svg"
@@ -189,7 +215,7 @@ export const SyncingModel1 = () => {
 
 export const SyncingModel3 = () => {
   return (
-    <figure>
+    <figure className="mt-8 mb-8">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-syncingModel-3.svg"
@@ -202,7 +228,7 @@ export const SyncingModel3 = () => {
 
 export const SyncingModel4 = () => {
   return (
-    <figure>
+    <figure className="mt-8 mb-8">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-syncingModel-4.svg"
@@ -215,11 +241,11 @@ export const SyncingModel4 = () => {
 
 export const GlobalRooms = () => {
   return (
-    <figure>
+    <figure className="mt-12 mb-12">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-global-rooms.svg"
-        className="w-8/12 mt-12"
+        className="w-8/12"
       ></object>
       <figcaption>Multiple rooms with different clients</figcaption>
     </figure>
@@ -228,7 +254,7 @@ export const GlobalRooms = () => {
 
 export const CloudflareArchitecture = () => {
   return (
-    <figure>
+    <figure className="mt-12 mb-12">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-cloudflare-architecture.svg"
@@ -241,7 +267,7 @@ export const CloudflareArchitecture = () => {
 
 export const StateUpdates = () => {
   return (
-    <figure>
+    <figure className="mt-6 mb-6">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-StateUpdates.svg"
@@ -254,7 +280,7 @@ export const StateUpdates = () => {
 
 export const DeltaUpdate = () => {
   return (
-    <figure>
+    <figure className="mt-6 mb-6">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-DeltaUpdates.svg"
@@ -267,7 +293,7 @@ export const DeltaUpdate = () => {
 
 export const SnapshotID = () => {
   return (
-    <figure>
+    <figure className="mt-12 mb-12">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-snapshotId.svg"
@@ -280,7 +306,7 @@ export const SnapshotID = () => {
 
 export const ON2Messaging = () => {
   return (
-    <figure>
+    <figure className="mt-12 mb-12">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-ON2-messaging.svg"
@@ -306,7 +332,7 @@ export const TimeDrivenMessages = () => {
 
 export const ONMessaging = () => {
   return (
-    <figure>
+    <figure className="mt-12 mb-12">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-ON-messaging.svg"
@@ -319,7 +345,7 @@ export const ONMessaging = () => {
 
 export const Subscriptions = () => {
   return (
-    <figure>
+    <figure className="mb-6">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-Subscriptions.svg"
@@ -332,38 +358,10 @@ export const Subscriptions = () => {
 
 export const DashboardArchitecture = () => {
   return (
-    <figure>
+    <figure className="mt-6 mb-6">
       <object
         type="image/svg+xml"
         data="/img/diagrams/diag-Dashboard-Architecture.svg"
-        className="w-8/12"
-      ></object>
-      <figcaption></figcaption>
-    </figure>
-  )
-}
-
-/*------------------------------------------*/
-
-export const CRDT = () => {
-  return (
-    <figure>
-    <object
-      type="image/svg+xml"
-      data="/img/diagrams/diag-CRDT.svg"
-      className="w-8/12"
-      ></object>
-      <figcaption></figcaption>
-    </figure>
-  )
-}
-
-export const OT = () => {
-  return (
-    <figure>
-      <object
-        type="image/svg+xml"
-        data="/img/diagrams/diag-OT.svg"
         className="w-8/12"
       ></object>
       <figcaption></figcaption>

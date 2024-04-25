@@ -329,7 +329,7 @@ Syncosaurus is a React Javascript client-side SDK with full ready-to-be-deployed
 
 Similar to commercial solutions like Liveblocks and Reflect, Syncosaurus exposes a client-side SDK while abstracting the backend logic and handling much of the deployment - the only thing a developer has to do to get the backend deployed is sign up for a Cloudflare account and use our CLI to deploy. However, unlike the commercial solutions, the Syncosaurus framework is free to use and open source so a developer can alter the default backend code if they choose.
 
-<figure>
+<figure class="comparison">
   <img src="/img/screenshots/comparison_table.png" />
 </figure>
 
@@ -535,7 +535,7 @@ We have prepared a simple todo list application to illustrate the mutator and cl
 
 Go ahead and enter some todos into Client 1 and watch them appear on Client 2 after a simulated latency of 1 second:
 
-<figure>
+<figure class="todo-list-app">
   <TodoList />
 </figure>
 
@@ -557,7 +557,7 @@ After your application is deployed, you can monitor its usage and get help debug
 
 The dashboard includes hourly time-series metrics related to errors and usage for each room so you can verify users are able to access and use your application in a bug-free manner.
 
-<figure>
+<figure class="analytics">
   <img
     src="/img/screenshots/dashboard_screenshot.png"
     alt="dashboard screenshot"
@@ -606,7 +606,7 @@ When choosing a provider to build on, we narrowed in on a couple of options.
 
 First, we could have built our serverless edge infrastructure using a combination of AWS Lambda@Edge, Amazon API Gateway, and a persistent storage mechanism like AWS Dynamo DB:
 
-<figure>
+<figure class="analytics">
   <img
     src="/img/diagrams/AWS-Lambda-Diagram.png"
     alt="AWS Architecture Diagram"

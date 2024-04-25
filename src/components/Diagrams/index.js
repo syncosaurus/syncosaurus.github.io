@@ -31,11 +31,15 @@ export const ConflictEdits = () => {
 }
 
 export const CRDT = () => {
-  return <object
-  type="image/svg+xml"
-  data="/img/diagrams/diag-CRDT.svg"
-  className="w-96"
-></object>
+  return (
+  <div className="flex justify-center">
+    <object
+    type="image/svg+xml"
+    data="/img/diagrams/diag-CRDT.svg"
+    className="w-9/12 pb-4"
+    ></object>
+  </div>
+  )
 }
 
 export const DeltaUpdate = () => {
@@ -87,11 +91,15 @@ export const OptimisticUI = () => {
 }
 
 export const OT = () => {
-  return <object
-  type="image/svg+xml"
-  data="/img/diagrams/diag-OT.svg"
-  className="w-96"
-></object>
+  return (
+    <div className="flex justify-center">
+      <object
+        type="image/svg+xml"
+        data="/img/diagrams/diag-OT.svg"
+        className="w-9/12"
+      ></object>
+    </div>
+  )
 }
 
 export const P2P = () => {

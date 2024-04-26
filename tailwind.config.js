@@ -20,8 +20,8 @@ module.exports = {
         sm: '4px',
       },
       screens: {
-        sm: '0px',
         lg: '997px',
+        sm: '0px',
       },
       colors: {
         syncoBlue: '#1D3370',

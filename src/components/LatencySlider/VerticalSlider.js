@@ -27,7 +27,7 @@ export default function VerticalSlider({
       <Slider
         orientation="vertical"
         value={currentValue}
-        sx={{ marginBottom: '4em' }}
+        sx={{ marginBottom: '2rem', marginRight: '5rem', marginLeft: `${delay === 0 ? '3rem' : null}` }}
         delay={delay}
         onChange={delay === 0 ? handleChange : null}
         className={delay === 0 ? '' : 'opacity-40'}

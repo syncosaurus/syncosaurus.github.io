@@ -104,7 +104,7 @@ export function TodoListClient({
 
 const divStyle = {
   border: '40px solid',
-  borderImage: 'url(' + '/landing/Client-window2.svg' + ') 25 25',
+  borderImage: 'url(' + '/landing/Client-window2.svg' + ') 35 35',
 }
 
 const deleteButtonStyle = {

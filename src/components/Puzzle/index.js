@@ -4,10 +4,27 @@ import Signal from './Signal'
 import SignalVertical from './SignalVertical'
 import { useEffect, useState } from 'react'
 
-function IFrame() {
+const divStyle = {
+  border: '14px solid',
+  borderImage: 'url(' + '/landing/Client-window2.svg' + ') 15',
+}
+
+function IFrame({ narrow }) {
   const {
     siteConfig: { customFields },
   } = useDocusaurusContext()
+
+  if (narrow === 'sm') {
+    return (
+      <div style={divStyle}>
+        <iframe
+          className="bg-transparent h-96 w-[475px] ml-[-35px]"
+          src={'https://c218db58.website-puzzle.pages.dev/'}
+        ></iframe>
+      </div>
+    )
+  }
+
   return (
     <div className="container inline-block w-[500px] m-0 p-0">
       <iframe
@@ -27,20 +44,30 @@ export default function Puzzle() {
     window.addEventListener('resize', e => setWindowWidth(e.target.innerWidth))
   }, [])
 
+  if (windowWidth < 600) {
+    return (
+      <div className="grid grid-cols-1 gap-0 justify-center w-full">
+        <IFrame narrow={'sm'} />
+        <SignalVertical />
+        <IFrame narrow={'sm'} />
+      </div>
+    )
+  }
+
   if (windowWidth < 1094) {
     return (
       <div className="grid grid-cols-1 gap-0 justify-center">
-        <IFrame />
+        <IFrame narrow={'md'} />
         <SignalVertical />
-        <IFrame />
+        <IFrame narrow={'md'} />
       </div>
     )
   }
   return (
     <div className="flex">
-      <IFrame />
+      <IFrame narrow={'lg'} />
       <Signal />
-      <IFrame />
+      <IFrame narrow={'lg'} />
     </div>
   )
 }

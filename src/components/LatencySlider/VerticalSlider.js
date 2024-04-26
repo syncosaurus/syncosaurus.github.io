@@ -51,10 +51,8 @@ const Slider = styled(BaseSlider)(
   color: ${delay === 0 ? '#1D3370' : '#7ED348'};
   height: 95%;
   width: 4px;
-  display: inline-block;
+  display: grid;
   position: relative;
-  margin-top: 0.75rem;
-  margin-right: 0.25rem;
   cursor: ${delay === 0 ? 'pointer' : null};
   touch-action: none;
   -webkit-tap-highlight-color: transparent;

@@ -21,19 +21,19 @@ export default function Home() {
     <Layout description="Syncosaurus Homepage">
       <div
         id="hero-landing"
-        className="font-sans h-11/12 rounded-3xl lg:rounded-tl-2xl lg:rounded-bl-2xl shadow-md overflow-hidden m-1 pt-10 pb-5 flex flex-col text-center items-center bg-gradient-to-br from-slate-900 via-slate-800 to-syncoBlue"
+        className="font-sans h-11/12 rounded-3xl lg:rounded-tl-2xl lg:rounded-bl-2xl shadow-md overflow-hidden m-1 pt-10 pb-5 flex flex-col text-center items-center bg-gradient-to-br from-slate-900 from-15% via-slate-800 via-42% to-syncoBlue"
       >
         <Puzzle />
-        <h1 className="text-6xl font-bold text-white m-8">
+        <h1 className="text-6xl text-white antialiased font-bold m-8">
           {siteConfig.title}
         </h1>
-        <p className="text-2xl text-white min-w-96 max-w-screen-lg">
+        <p className="text-2xl text-white antialiased min-w-96 max-w-screen-lg">
           {siteConfig.tagline}
         </p>
         <div className="pt-2 pb-20 items-center">
           <Link
             href="#_"
-            className="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-xl text-white font-lg font-800 bg-syncoGreen hover:bg-green-400 rounded-md hover:text-white hover:no-underline sm:w-auto sm:mb-0"
+            className="card-shine-effect shadow-xl inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-xl text-white font-700 rounded-md sm:w-auto sm:mb-0"
             data-primary="green-500"
             data-rounded="rounded-3xl"
             data-primary-reset="{}"

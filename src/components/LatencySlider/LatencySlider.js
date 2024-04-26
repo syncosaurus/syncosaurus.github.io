@@ -4,7 +4,6 @@ import FormControl from '@mui/material/FormControl'
 import FormHelperText from '@mui/material/FormHelperText'
 import Select from '@mui/material/Select'
 import VerticalSlider from './VerticalSlider'
-import VerticalSliderContainer from './VerticalSliderContainer'
 import '@site/src/css/latencySlider.css'
 
 export default function LatencySlider() {
@@ -20,37 +19,35 @@ export default function LatencySlider() {
   }
 
   return (
-    <div className="flex justify-start w-auto">
-      <FormControl sx={{ display: 'inline-block' }}>
-        <FormHelperText sx={{ fontSize: '16.5px', alignItems: 'start' }}>Latency</FormHelperText>
-        <Select
-          sx={{ width: '120px', height: '30px', alignItems: 'center' }}
-          value={secondSliderlatency}
-          onChange={handleLatencyChange}
-        >
-          <MenuItem value={50}> 50 ms</MenuItem>
-          <MenuItem value={150}>150 ms</MenuItem>
-          <MenuItem value={300}>300 ms</MenuItem>
-          <MenuItem value={500}>500 ms</MenuItem>
-          <MenuItem value={1000}>1000 ms</MenuItem>
-        </Select>
-      </FormControl>
-      <VerticalSliderContainer>
+    <div className="grid grid-cols-5 my-3 gap-x-2.5 max-w-max justify-around">
+      <div className="col-span-1 justify-self-start">
+        <FormControl>
+          <FormHelperText>Latency</FormHelperText>
+          <Select sx={{ height: "2rem", verticalAlign: "middle" }} value={secondSliderlatency} onChange={handleLatencyChange}>
+            <MenuItem value={50}> 50 ms</MenuItem>
+            <MenuItem value={150}>150 ms</MenuItem>
+            <MenuItem value={300}>300 ms</MenuItem>
+            <MenuItem value={500}>500 ms</MenuItem>
+            <MenuItem value={1000}>1000 ms</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+      <div className="col-span-2">
         <VerticalSlider
           orientation="vertical"
           value={mainSliderValue}
           delay={0}
           handleMainSliderChange={handleMainSliderChange}
         />
-      </VerticalSliderContainer>
-      <VerticalSliderContainer>
+      </div>
+      <div className="col-span-2">
         <VerticalSlider
           orientation="vertical"
           value={mainSliderValue}
           delay={secondSliderlatency}
           handleMainSliderChange={handleMainSliderChange}
         />
-      </VerticalSliderContainer>
+      </div>
     </div>
   )
 }

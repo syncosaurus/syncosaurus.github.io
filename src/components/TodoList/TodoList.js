@@ -23,10 +23,6 @@ export default function TodoList() {
     setTodoList(filteredTodoList)
   }
 
-  const divStyle = {
-    border: '40px solid',
-    borderImage: 'url(' + '/landing/Client-window2.svg' + ') 25 25',
-  }
   if (windowWidth < 1094) {
     return (
       <div className="grid grid-cols-1 gap-0 justify-center text-left">

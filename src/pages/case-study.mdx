@@ -211,7 +211,7 @@ Since the advent of Google Docs, the ability for multiple clients to simultaneou
 
 <WhiteboardConflict />
 
-If these changes occur simultaneously, a conflict clearly occurs and to maintain a consistent, synchronized view across clients (i.e. state convergence), there must be some kind of conflict-resolution strategy in place
+If these changes occur simultaneously, a conflict clearly occurs and to maintain a consistent, synchronized view across clients (i.e. state convergence), there must be some kind of conflict-resolution strategy in place.
 
 #### Conflict Resolution Strategies
 
@@ -237,7 +237,7 @@ However, if a change is meant to be [deterministic](https://en.wikipedia.org/wik
 
 The process of transactional conflict resolution is somewhat simple to reason about.
 
-If two clients make a concurrent change to the same object but modify a different property, no conflicts occur. Because clients only send the intent of a change, these can both be processed in the order of arrival by the server
+If two clients make a concurrent change to the same object but modify a different property, no conflicts occur. Because clients only send the intent of a change, these can both be processed in the order of arrival by the server.
 
 <NoConflictEdits />
 
@@ -245,9 +245,9 @@ When concurrent changes occur to the same property, a conflict occurs. By defaul
 
 <ConflictEdits />
 
-However, depending on the application, it is possible to build in any custom conflict resolution that would override the default Last Write Wins Behavior
+However, depending on the application, it is possible to build in any custom conflict resolution that would override the default Last Write Wins Behavior.
 
-While this strategy may not be best suited for use cases where LLW is not the desired default resolution strategy or for decentralized architectures, it is highly flexible and easy to reason about
+While this strategy may not be best suited for use cases where LLW is not the desired default resolution strategy or for decentralized architectures, it is highly flexible and easy to reason about.
 
 ##### Conflict-Free Replicated Data Types (CRDTs)
 
@@ -365,8 +365,8 @@ Next one can choose to add Syncosaurus to an existing React project using `npx s
 
 <img
   src="/img/screenshots/syncosaurus-init.png"
-  style={{ transform: 'scale(.82)', borderRadius: '0.5rem' }}>
-</img>
+  style={{ transform: 'scale(.82)', borderRadius: '0.5rem' }}
+></img>
 
 #### Create and Launch
 
@@ -562,7 +562,12 @@ The dashboard includes hourly time-series metrics related to errors and usage fo
     src="/img/screenshots/dashboard_screenshot.png"
     alt="dashboard screenshot"
     width="85%"
-    style={{ transform: 'scale(.82)', borderRadius: '0.5rem', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)' }}
+    style={{
+      transform: 'scale(.82)',
+      borderRadius: '0.5rem',
+      boxShadow:
+        '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+    }}
   />
 </figure>
 

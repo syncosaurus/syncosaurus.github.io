@@ -37,15 +37,8 @@
 @layer base {
   html {
     font-family: "Ubuntu", system-ui, sans-serif;
-  }
-}
-
-@keyframes glow {
-  from {
-    text-shadow: 0 0 2px #fff, 0 0 2px #fff;
-  }
-  to {
-    text-shadow: 0 0 3px #233e87, 0 0 5px #233e87;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
   }
 }
 
@@ -58,6 +51,7 @@
   --ifm-color-primary-light: #284390;
   --ifm-color-primary-lighter: #294697;
   --ifm-color-primary-lightest: #2f4faa;
+  --ifm-heading-font-family: "Ubuntu", system-ui, sans-serif;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
@@ -230,16 +224,3 @@ figcaption {
   background-color: #7ed348;
   text-decoration: none;
 }
-
-.glow {
-  font-size: 68px;
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 0 1px #fff, 0 0 3px #fff;
-  -webkit-animation: glow 2s ease-in-out infinite alternate;
-  -moz-animation: glow 2s ease-in-out infinite alternate;
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-
-

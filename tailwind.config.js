@@ -10,12 +10,12 @@ module.exports = {
   darkMode: ['class', '[data-theme="dark"]'],
   content: ['./src/**/*.{js,ts,jsx,tsx,html}'],
   theme: {
+    fontFamily: {
+      sans: ['"Ubuntu"', ...fontFamily.sans],
+      jakarta: ['"Ubuntu"', ...fontFamily.sans],
+      mono: ['"Fira Code"', ...fontFamily.mono],
+    },
     extend: {
-      fontFamily: {
-        sans: ['"Ubuntu"', ...fontFamily.sans],
-        jakarta: ['"Ubuntu"', ...fontFamily.sans],
-        mono: ['"Fira Code"', ...fontFamily.mono],
-      },
       borderRadius: {
         sm: '4px',
       },

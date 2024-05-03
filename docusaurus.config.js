@@ -13,7 +13,7 @@ const config = {
   title: 'Syncosaurus',
   tagline:
     'An open-source framework for real-time, collaborative web applications',
-  favicon: 'img/favicon2.ico',
+  favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://syncosaurus.github.io',

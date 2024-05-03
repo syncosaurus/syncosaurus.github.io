@@ -25,7 +25,7 @@ export default function Team() {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://www.google.com"
+                href="http://alexsklar.dev/"
                 target="_blank"
                 className="hover:filter-syncoBlue"
               >
@@ -67,7 +67,7 @@ export default function Team() {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://www.google.com"
+                href="https://emargetis.com/"
                 target="_blank"
                 className="hover:filter-syncoBlue"
               >
@@ -105,11 +105,11 @@ export default function Team() {
               Joseph Liang
             </h3>
             <p className="text-gray-500 text-center text-lg sm:text-md md:text-lg">
-              Oakland, CA
+              San Francisco, CA
             </p>
             <div className="flex gap-3">
               <a
-                href="https://www.google.com"
+                href="https://jgoteam.github.io/"
                 target="_blank"
                 className="hover:filter-syncoBlue"
               >
@@ -123,7 +123,7 @@ export default function Team() {
                 <img src="/img/icons/github.svg" height={24} width={24}></img>
               </a>
               <a
-                href="https://www.linkedin.com/in/joseph-liang-otr-l-1b45668a/"
+                href="https://www.linkedin.com/in/joseph-liang-1b45668a/"
                 target="_blank"
                 className="hover:filter-syncoBlue"
               >

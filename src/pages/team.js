@@ -39,7 +39,7 @@ export default function Team() {
                 <img src="/img/icons/github.svg" height={24} width={24}></img>
               </a>
               <a
-                href="https://www.linkedin.com/in/alex-sklar-a1829371/"
+                href="https://www.linkedin.com/in/alexsklar"
                 target="_blank"
                 className="hover:filter-syncoBlue"
               >
